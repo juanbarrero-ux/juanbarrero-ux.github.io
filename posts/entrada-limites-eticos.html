@@ -3,57 +3,134 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Límites éticos para la IA — Reflexiones</title>
-    <style>
-      body{font-family:Inter,system-ui,Segoe UI,Arial,Helvetica;background:#071025;color:#e6eef6;margin:0;padding:28px}
-      .card{max-width:900px;margin:28px auto;padding:26px;background:rgba(255,255,255,0.02);border-radius:10px}
-      h1{margin:0 0 8px;font-size:26px}
-      p.lead{color:#9aa4b2}
-      .video-wrap{margin:18px 0}
-      .note{color:#9aa4b2;font-size:14px}
-      a{color:#7dd3fc}
-    </style>
+    <title>Límites éticos para la IA — Juan Barrero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
-    <article class="card page-card">
-      <h1>Límites éticos para la inteligencia artificial — Reflexiones</h1>
-      <p class="lead">Entrada con un video creado en Google Vids sobre mis principales reflexiones del documental <em>"Límites éticos para la inteligencia artificial | DW Documental"</em>.</p>
-
-      <section class="video-wrap">
-        <!-- REEMPLAZA el valor de data-src con la URL de tu video en Google Vids o YouTube -->
-        <div style="position:relative;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden">
-          <iframe id="videoEmbed" src="" data-src="https://www.youtube.com/embed/sHVwwriaT6k?start=5" title="Video: Límites éticos para la IA" style="position:absolute;left:0;top:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
+    <div class="container">
+      <header class="site" style="margin-bottom:18px">
+        <div class="brand">
+          <div class="logo">JB</div>
+          <div>
+            <h1>Límites éticos para la IA</h1>
+            <div class="meta">Análisis técnico y de políticas</div>
+          </div>
         </div>
-        <p class="note">Si el reproductor no carga, <a href="https://www.youtube.com/watch?v=sHVwwriaT6k&t=5s" target="_blank" rel="noopener">abre el video en YouTube</a>. El iframe utiliza el parámetro de inicio <code>?start=5</code> para comenzar en 5 segundos.</p>
-      </section>
+        <nav>
+          <a href="/">← Inicio</a>
+        </nav>
+      </header>
 
-      <section>
-        <h2>Sobre el documental</h2>
-        <p>Estamos ante una era dorada digital o amenaza el apocalipsis robot? Se necesitan y se buscan estándares éticos para tratar con la inteligencia artificial. ¿Qué nos hace únicos a los seres humanos... todavía?</p>
-        <p>Aunque aún falten décadas para que la humanidad conviva con máquinas que aprendan por sí mismas y sean tan inteligentes como las personas, ya en la actualidad hay bots conversacionales, robots, asistentes digitales e inteligencias artificiales que, a menudo, no pueden distinguirse de los humanos. Según los científicos y los expertos en IA, estamos en una carrera contra el tiempo: hay que encontrar pautas éticas antes de que la tecnología nos alcance.</p>
-        <p>Mientras el profesor de IA Jürgen Schmidhuber profetiza una inteligencia artificial con fábricas de robots en el espacio, el físico Max Tegmark advierte sobre un estado de control totalitario, y el filósofo Thomas Metzinger alerta de una carrera armamentista mortal. Europa podría ser pionera si desarrolla un código de ética internacional vinculante.</p>
-      </section>
+      <main class="card page-card entry-page">
+        <!-- Hero de la entrada -->
+        <div class="entry-hero" style="background-image: url('/IMAGENES/20646dff8dd3ad17a3cc01c625bdb146.jpg')">
+          <div class="entry-hero-overlay">
+            <h2>Límites éticos para la inteligencia artificial</h2>
+            <p class="entry-meta">📅 Publicado: 2025 • 👤 Juan Pablo Barrero • 🏷️ Ética, IA, Política Pública</p>
+          </div>
+        </div>
 
-      <section>
-        <h2>Mis reflexiones principales</h2>
-        <ul>
-          <li>Necesitamos marcos éticos claros y globales antes de que la tecnología se despliegue masivamente.</li>
-          <li>La transparencia y la responsabilidad deben ser obligatorias para sistemas críticos.</li>
-          <li>La educación y la alfabetización digital son esenciales para que la ciudadanía entienda riesgos y beneficios.</li>
-          <li>Europa puede liderar proponiendo normas vinculantes que otros países adopten o adapten.</li>
-        </ul>
-      </section>
+        <p class="lead">Análisis extendido sobre el documental de DW: una mirada técnica y ética sobre el desarrollo de la IA, sus riesgos y las decisiones políticas y de ingeniería necesarias hoy para garantizar un futuro humano y seguro.</p>
 
-      <footer style="margin-top:18px;color:#9aa4b2;font-size:13px">Publicado: 2025 — Reflexión personal sobre el documental de DW.</footer>
-    </article>
+        <section class="entry-section">
+          <h3>🎬 Video: Reflexiones sobre el documental</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/sHVwwriaT6k?start=5" title="Límites éticos para la IA" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">En este video comento los puntos centrales del documental y extraigo lecciones prácticas para equipos de desarrollo y responsables de producto.</p>
+        </section>
 
-    <script>
-      // Auto-cargar el src real desde data-src si está presente (evita carga anticipada)
-      (function(){
-        var iframe=document.getElementById('videoEmbed');
-        var src=iframe.getAttribute('data-src');
-        if(src){iframe.src=src}
-      })();
-    </script>
+        <section class="entry-section">
+          <h3>📖 Sobre el documental</h3>
+          <p>¿Estamos ante una era dorada digital o amenaza el apocalipsis robot? Se necesitan y se buscan estándares éticos para tratar con la inteligencia artificial. ¿Qué nos hace únicos a los seres humanos... todavía?</p>
+          <p>Aunque aún falten décadas para que la humanidad conviva con máquinas que aprendan por sí mismas y sean tan inteligentes como las personas, ya en la actualidad hay bots conversacionales, robots, asistentes digitales e inteligencias artificiales que, a menudo, no pueden distinguirse de los humanos.</p>
+          <blockquote class="entry-quote">
+            "Según los científicos y los expertos en IA, estamos en una carrera contra el tiempo: hay que encontrar pautas éticas antes de que la tecnología nos alcance."
+          </blockquote>
+          <p>Mientras el profesor de IA Jürgen Schmidhuber profetiza una inteligencia artificial con fábricas de robots en el espacio, el físico Max Tegmark advierte sobre un estado de control totalitario, y el filósofo Thomas Metzinger alerta de una carrera armamentista mortal. Europa podría ser pionera si desarrolla un código de ética internacional vinculante.</p>
+        </section>
+
+        <section class="entry-section">
+          <h3>🔍 Análisis extendido</h3>
+          <p>El documental plantea con acierto que la conversación sobre IA ya no es puramente académica: afecta diseño de sistemas, mercados y soberanía. Desde una perspectiva técnica, identifico tres vectores críticos:</p>
+          
+          <div class="analysis-cards">
+            <div class="analysis-card">
+              <div class="analysis-icon">🔬</div>
+              <h4>Integridad y transparencia</h4>
+              <p>Los modelos deben ofrecer trazabilidad en datos de entrenamiento, evaluación de sesgos y métricas operativas que permitan auditoría externa.</p>
+            </div>
+            <div class="analysis-card">
+              <div class="analysis-icon">⚙️</div>
+              <h4>Gobernanza responsable</h4>
+              <p>Por más sofisticado que sea un modelo, su impacto depende de cómo se integre en productos y procesos—es vital contar con pruebas de seguridad antes del despliegue.</p>
+            </div>
+            <div class="analysis-card">
+              <div class="analysis-icon">🎓</div>
+              <h4>Resiliencia educativa</h4>
+              <p>La sociedad necesita capacidad crítica y herramientas para entender y contramedir decisiones automatizadas cuando sean incorrectas o injustas.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="entry-section">
+          <h3>⚠️ Riesgos técnicos y mitigaciones</h3>
+          <p>Entre los riesgos más relevantes están la amplificación de sesgos, la automatización de decisiones sensibles y el uso dual de IA en contextos militares o de vigilancia masiva.</p>
+          
+          <h4>Mitigaciones prácticas:</h4>
+          <ul class="styled-list">
+            <li><span class="list-icon">✓</span> Evaluaciones continuas de impacto (A/B + fairness testing) en producción.</li>
+            <li><span class="list-icon">✓</span> Implementación de límites de autonomía y requisitos de intervención humana en decisiones críticas.</li>
+            <li><span class="list-icon">✓</span> Políticas de compartición de datos y modelos que favorezcan transparencia sin comprometer privacidad.</li>
+          </ul>
+        </section>
+
+        <section class="entry-section">
+          <h3>🏛️ Implicaciones de política pública</h3>
+          <p>La llamada a un código ético internacional, vinculante, es ambiciosa pero razonable: normas técnicas estandarizadas (p. ej. formatos de explicación, pruebas de seguridad) facilitarían interoperabilidad y supervisión multilocal.</p>
+        </section>
+
+        <section class="entry-section">
+          <h3>💡 Mis reflexiones principales</h3>
+          <ul class="styled-list reflection-list">
+            <li><span class="list-icon">1</span> Necesitamos marcos éticos claros y globales antes de que la tecnología se despliegue masivamente.</li>
+            <li><span class="list-icon">2</span> La transparencia y la responsabilidad deben ser obligatorias para sistemas críticos.</li>
+            <li><span class="list-icon">3</span> La educación y la alfabetización digital son esenciales para que la ciudadanía entienda riesgos y beneficios.</li>
+            <li><span class="list-icon">4</span> Europa puede liderar proponiendo normas vinculantes que otros países adopten o adapten.</li>
+          </ul>
+        </section>
+
+        <section class="entry-section cta-section">
+          <h3>📚 Contenido relacionado</h3>
+          <div class="related-posts">
+            <a href="presentacion-etica-digital.html" class="related-post">
+              <span class="related-icon">📊</span>
+              <span>Presentación: Ética digital — Aplicaciones</span>
+            </a>
+            <a href="infografia-derechos-autor.html" class="related-post">
+              <span class="related-icon">📜</span>
+              <span>Infografía: Derechos de Autor</span>
+            </a>
+          </div>
+        </section>
+
+        <div class="entry-author">
+          <div class="author-avatar">JB</div>
+          <div class="author-info">
+            <strong>Juan Pablo Barrero Contreas</strong>
+            <p>Estudiante de Tecnología en Programación Informática — UPTC</p>
+            <a href="mailto:juan.barrero@uptc.edu.co" class="author-email">juan.barrero@uptc.edu.co</a>
+          </div>
+        </div>
+
+      </main>
+
+      <footer class="site">
+        © 2025 Juan Barrero — Desarrollo Tecnológico y Ética de la IA
+      </footer>
+    </div>
   </body>
 </html>
