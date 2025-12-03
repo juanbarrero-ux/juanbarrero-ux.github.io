@@ -73,7 +73,6 @@
 
             <h4>Riesgos técnicos y mitigaciones</h4>
             <p>Entre los riesgos más relevantes están la amplificación de sesgos, la automatización de decisiones sensibles y el uso dual de IA en contextos militares o de vigilancia masiva. Mitigaciones prácticas:</p>
-              <li><a href="posts/presentacion-etica-digital.html">Presentación: Ética digital — Aplicaciones personales y laborales</a></li>
             <ul>
               <li>Evaluaciones continuas de impacto (A/B + fairness testing) en producción.</li>
               <li>Implementación de límites de autonomía y requisitos de intervención humana en decisiones críticas.</li>
@@ -85,36 +84,36 @@
           </section>
         </div>
 
-        <aside style="width:360px">
+        <aside class="hero-aside">
           <div class="card side-panel">
-            <h3 style="margin-top:0">Entradas principales</h3>
+            <h3 class="panel-title"><span class="icon">📰</span> Entradas principales</h3>
             <div class="aside-posts">
               <!-- aside posts populated by JS: small cards showing title and background image -->
             </div>
           </div>
-          <div style="height:18px"></div>
-          <div class="card contact-compact side-panel-contact" style="margin-top:6px">
-            <h4 style="margin-top:0">Contacto</h4>
-            <p style="color:var(--muted);font-size:14px;margin:0">Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a></p>
-            <div style="margin-top:8px;display:flex;gap:8px;">
-              <button class="btn" data-copy-email="juan.barrero@uptc.edu.co">Copiar correo</button>
-              <a class="btn social" href="https://github.com/juanbarrero-ux" target="_blank" rel="noopener">GitHub</a>
+          
+          <div class="card contact-card">
+            <h4 class="contact-title"><span class="icon">📧</span> Contacto</h4>
+            <p class="contact-email">Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a></p>
+            <div class="contact-buttons">
+              <button class="btn copy-btn" data-copy-email="juan.barrero@uptc.edu.co">
+                <span class="btn-icon">📋</span> Copiar correo
+              </button>
+              <a class="btn social github-btn" href="https://github.com/juanbarrero-ux" target="_blank" rel="noopener">
+                <span class="btn-icon">🐙</span> GitHub
+              </a>
             </div>
           </div>
         </aside>
         
       </main>
 
-      <section style="max-width:1100px;margin:26px auto">
-          <div class="card">
-          <h3>Resumen ejecutivo</h3>
-          <p class="lead">Para equipos técnicos: priorizar controles operativos, métricas explicables y planes de contingencia. Para gobiernos: promover estándares de auditoría y transparencia que no frenen la innovación, sino que la encaucen responsablemente.</p>
-        </div>
-      </section>
 
-      <!-- Entradas profesionales -->
-      <section class="posts" id="posts" style="max-width:1100px;margin:26px auto">
-        <h3>Entradas recientes</h3>
+
+      <!-- Entradas recientes - sección principal inferior -->
+      <section class="posts-section" id="posts">
+        <h3 class="section-title"><span class="title-accent"></span>Entradas recientes<span class="title-accent"></span></h3>
+        <p class="section-subtitle">Explora mis últimos artículos sobre ética digital, inteligencia artificial y desarrollo tecnológico</p>
         <div class="posts-grid">
           <article class="post-card card" data-img="/IMAGENES/20646dff8dd3ad17a3cc01c625bdb146.jpg">
             <div class="thumb" role="img" aria-label="miniatura"></div>
@@ -145,6 +144,15 @@
             <p><a class="btn" href="posts/infografia-derechos-autor.html">Ver infografía</a></p>
             </div>
           </article>
+        </div>
+      </section>
+
+      <!-- Resumen ejecutivo -->
+      <section class="summary-section">
+        <div class="card summary-card">
+          <div class="summary-icon">💡</div>
+          <h3>Resumen ejecutivo</h3>
+          <p class="lead">Para equipos técnicos: priorizar controles operativos, métricas explicables y planes de contingencia. Para gobiernos: promover estándares de auditoría y transparencia que no frenen la innovación, sino que la encaucen responsablemente.</p>
         </div>
       </section>
 
