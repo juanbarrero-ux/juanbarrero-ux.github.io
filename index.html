@@ -70,12 +70,21 @@
             <div class="card mindmap">
             <h3 style="margin-top:0">Mapa mental — Límites éticos (Markmap)</h3>
             <div id="mindmap" style="height:420px"></div>
+            <noscript>
+              <div class="card" style="margin-top:12px">
+                <strong>Mapa mental:</strong>
+                <p class="muted" style="margin:6px 0 0">Este contenido requiere JavaScript para mostrarse de forma interactiva. Aquí se muestra un resumen en texto.</p>
+                <div style="margin-top:10px;max-height:200px;overflow:auto;color:var(--muted);font-size:14px">
+                  <pre style="white-space:pre-wrap;margin:0">Límites éticos para la inteligencia artificial\n\n  - Riesgos: Sesgos, Vigilancia, Automatización de decisiones\n  - Mitigaciones: Evaluación continua, Transparencia, Gobernanza\n  - Implicaciones técnicas: Límites de autonomía, Rollback, Privacidad\n\n(Activa JavaScript para ver el mapa interactivo)</pre>
+                </div>
+              </div>
+            </noscript>
             <p style="color:var(--muted);font-size:13px;margin-top:8px">Interactúa con el mapa para explorar ideas y conexiones.</p>
           </div>
           <div style="height:18px"></div>
           <div class="card" style="margin-top:12px">
             <h4 style="margin-top:0">Contacto</h4>
-            <p style="color:var(--muted);font-size:14px;margin:0">Correo: <a href="mailto:juan@example.com">juan@example.com</a></p>
+            <p style="color:var(--muted);font-size:14px;margin:0">Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a> &nbsp; <button class="btn" style="margin-left:8px" data-copy-email="juan.barrero@uptc.edu.co">Copiar correo</button></p>
           </div>
         </aside>
       </main>
@@ -159,6 +168,7 @@
     </script>
 
     <!-- Cargar Markmap (d3 primero, luego markmap-lib y markmap-view) y renderizar -->
+    <!-- NOTE: If you are behind a firewall or CDNs are blocked, add local copies of the bundles under /assets/vendor/d3.min.js, /assets/vendor/markmap-lib.iife.js and /assets/vendor/markmap-view.iife.js -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
     <!-- UMD/IIFE bundles (browser-ready) -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.18.12/dist/browser/index.iife.js"></script>
@@ -169,7 +179,25 @@
       (function waitForMarkmap() {
         if (!window.d3) {
           console.log('Esperando a d3...');
-          return setTimeout(waitForMarkmap, 150);
+          // try dynamic local vendor fallback after short delay (user can add local copies into /assets/vendor/)
+          if(!window.__attemptedLocalVendor){
+            window.__attemptedLocalVendor = true;
+            (function loadLocalVendor(){
+              try{
+                var s = document.createElement('script'); s.src = '/assets/vendor/d3.min.js'; s.onload=function(){ console.log('Local d3 cargado'); };
+                s.onerror=function(){ console.warn('Local d3 no encontrado en /assets/vendor/d3.min.js'); };
+                document.head.appendChild(s);
+                // Also append markmap bundles (IIFE/UMD if you downloaded them)
+                var s2 = document.createElement('script'); s2.src = '/assets/vendor/markmap-lib.iife.js'; s2.onload=function(){ console.log('Local markmap-lib cargado'); };
+                s2.onerror=function(){ console.warn('Local markmap-lib no encontrado'); };
+                document.head.appendChild(s2);
+                var s3 = document.createElement('script'); s3.src = '/assets/vendor/markmap-view.iife.js'; s3.onload=function(){ console.log('Local markmap-view cargado'); };
+                s3.onerror=function(){ console.warn('Local markmap-view no encontrado'); };
+                document.head.appendChild(s3);
+              }catch(e){console.warn('Error al cargar vendor local', e)}
+            })();
+          }
+          return setTimeout(waitForMarkmap, 250);
         }
         if (!window.markmap) {
           console.log('Esperando a markmap (view)...');
@@ -228,6 +256,49 @@
           if (mm && typeof mm.fit === 'function') mm.fit().catch(()=>{});
         } catch (err) {
           console.error('Error al crear Markmap:', err);
+          // Fallback: render simple HTML outline from Markdown so content is visible
+          function renderFallback(mdText, containerEl){
+            try{
+              // Remove code blocks for simpler parsing
+              mdText = mdText.replace(/```[\s\S]*?```/g, '');
+              const lines = mdText.split('\n');
+              const root = document.createElement('div');
+              root.className = 'markmap-fallback';
+              let currentParent = root;
+              const parents = [root];
+
+              lines.forEach(function(l){
+                const trimmed = l.trim();
+                if(!trimmed) return;
+                const h = trimmed.match(/^(#{1,6})\s+(.*)$/);
+                const li = trimmed.match(/^[-*+]\s+(.*)$/);
+                if(h){
+                  const level = h[1].length;
+                  const text = h[2];
+                  // Ensure parent exists for this level
+                  while(parents.length <= level) {
+                    const newDiv = document.createElement('div');
+                    parents[parents.length-1].appendChild(newDiv);
+                    parents.push(newDiv);
+                  }
+                  // trim back to correct level
+                  while(parents.length > level+1) parents.pop();
+                  const heading = document.createElement('h' + Math.min(3, level+1));
+                  heading.textContent = text;
+                  parents[parents.length-1].appendChild(heading);
+                } else if(li){
+                  // Find or create a ul on the last parent
+                  let ul = parents[parents.length-1].querySelector('ul');
+                  if(!ul){ ul = document.createElement('ul'); parents[parents.length-1].appendChild(ul); }
+                  const item = document.createElement('li'); item.textContent = li[1]; ul.appendChild(item);
+                }
+              });
+              containerEl.innerHTML = '';
+              containerEl.appendChild(root);
+              containerEl.classList.add('markmap-fallback-wrapper');
+            } catch(e){ console.error('Fallback render error', e); }
+          }
+          renderFallback(md, container);
         }
       })();
     </script>
