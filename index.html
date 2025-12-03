@@ -150,23 +150,30 @@
 - Legislación basada en evidencia
     </script>
 
-    <!-- Cargar Markmap desde CDN y renderizar -->
+    <!-- Cargar Markmap (d3 primero, luego markmap-lib y markmap-view) y renderizar -->
     <script>
       (function(){
         function loadScript(src, cb){
           var s=document.createElement('script'); s.src=src; s.onload=cb; s.onerror=function(){console.error('Error loading',src);}; document.head.appendChild(s);
         }
-        // Cargar markmap-lib y markmap-view (versiones estables desde jsdelivr)
-        loadScript('https://cdn.jsdelivr.net/npm/markmap-lib@0.13.0/dist/index.min.js', function(){
-          loadScript('https://cdn.jsdelivr.net/npm/markmap-view@0.13.0/dist/index.min.js', function(){
-            try{
-              var md = document.getElementById('mindmap-md').textContent;
-              var Transformer = markmapLib.Transformer;
-              var Markmap = markmap.Markmap;
-              var mm = Markmap.create('#mindmap');
-              var result = Transformer.transform(md);
-              mm.setData(result.root);
-            }catch(e){console.error('Markmap render error',e)}
+        // d3 es requerido por markmap-view
+        loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js', function(){
+          loadScript('https://cdn.jsdelivr.net/npm/markmap-lib@0.13.0/dist/index.min.js', function(){
+            loadScript('https://cdn.jsdelivr.net/npm/markmap-view@0.13.0/dist/index.min.js', function(){
+              try{
+                var md = document.getElementById('mindmap-md').textContent;
+                var Transformer = window.markmapLib && window.markmapLib.Transformer;
+                var Markmap = window.markmap && window.markmap.Markmap;
+                if(!Transformer || !Markmap){
+                  console.error('Markmap libraries not available:', {Transformer: !!Transformer, Markmap: !!Markmap});
+                  return;
+                }
+                var result = Transformer.transform(md);
+                var mm = Markmap.create('#mindmap');
+                mm.setData(result.root);
+                mm.fit();
+              }catch(e){console.error('Markmap render error',e)}
+            });
           });
         });
       })();
