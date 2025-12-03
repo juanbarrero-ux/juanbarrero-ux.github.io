@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00D4FF"/>
+      <stop offset="1" stop-color="#FF5B8A"/>
+    </linearGradient>
+    <style type="text/css"><![CDATA[
+      .title { font: 700 36px 'Inter', sans-serif; fill: url(#g1); }
+      .subtitle { font: 600 18px 'Inter', sans-serif; fill: #FFFFFF; opacity:0.9 }
+      .section-title { font: 700 20px 'Inter', sans-serif; fill: #FFFFFF }
+      .muted { font: 400 14px 'Inter', sans-serif; fill: #d9e8f5 }
+      .card { fill: rgba(255,255,255,0.04); stroke: rgba(255,255,255,0.06); stroke-width:1; }
+      .tag { font: 700 13px 'Inter', sans-serif; fill: #FFFFFF }
+      .bullet { fill: #bfefff }
+    ]]></style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#041025"/>
+
+  <g transform="translate(64,64)">
+    <text x="0" y="48" class="title">Infografía — Derechos de autor</text>
+    <text x="0" y="78" class="subtitle">Moral • Patrimoniales • Explotación — Licencias populares</text>
+
+    <!-- Left Column: Rights -->
+    <rect x="0" y="110" width="720" height="300" rx="12" class="card"/>
+    <text x="24" y="150" class="section-title">Tipos de derechos</text>
+    <text x="24" y="190" class="muted">• Derecho moral: paternidad, integridad (no transferible)</text>
+    <text x="24" y="220" class="muted">• Derechos patrimoniales: reproducción, distribución, comunicación pública</text>
+    <text x="24" y="250" class="muted">• Derechos conexos: intérpretes, productores, emisoras</text>
+
+    <!-- Right Column: Licenses -->
+    <rect x="800" y="110" width="720" height="300" rx="12" class="card"/>
+    <text x="824" y="150" class="section-title">Modelos de licencias</text>
+    <text x="824" y="190" class="muted">Copyright (por defecto) — Todo reservado</text>
+    <text x="824" y="220" class="muted">Creative Commons — condiciones: BY, NC, SA, ND</text>
+    <text x="824" y="250" class="muted">Copyleft / GPL — libertad y reciprocidad para derivados</text>
+    <text x="824" y="280" class="muted">LGPL — librerías: uso en propietarios sin abrir todo el producto</text>
+    <text x="824" y="310" class="muted">Dominio público — sin restricciones</text>
+
+    <!-- Visual area: How to implement for a developer (bottom) -->
+    <rect x="0" y="455" width="1520" height="320" rx="12" class="card"/>
+    <text x="24" y="500" class="section-title">Guía práctica para tecnólogos</text>
+    <g transform="translate(24,520)">
+      <text x="0" y="28" class="muted">1) MIT (permisiva): Copiar licencia en <tspan class="tag">LICENSE</tspan>, añadir <tspan class="tag">package.json</tspan> "license": "MIT", headers en archivos de código y README.</text>
+      <text x="0" y="56" class="muted">2) LGPL (librerías): Incluir <tspan class="tag">COPYING.LESSER</tspan>, licenciamiento en manifest y documentar obligaciones para cambios en la librería.</text>
+      <text x="0" y="92" class="muted">Recomendaciones:</text>
+      <text x="24" y="120" class="muted">• Usar identificadores SPDX para automatización (ej: MIT, LGPL-3.0-or-later).</text>
+      <text x="24" y="148" class="muted">• Archivo CONTRIBUTING.md y política de contribuciones.</text>
+      <text x="24" y="176" class="muted">• Para recursos gráficos: considerar Creative Commons y añadir creditos/atribuciones (BY).</text>
+    </g>
+
+    <!-- footer small legend: quick comparison -->
+    <g transform="translate(24,850)">
+      <text class="muted">Comparación rápida — Licencias:</text>
+    </g>
+  </g>
+</svg>
