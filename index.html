@@ -43,7 +43,7 @@
           <h2 id="profile-name">Juan Pablo Barrero Contreas</h2>
           <p class="lead">Soy Juan Pablo Barrero, estudiante tecnólogo en Programación Informática en la UPTC. Soy apasionado por la seguridad informática y el desarrollo responsable de la tecnología. Me interesa la gobernanza y la ética aplicada a sistemas inteligentes.</p>
           <div class="meta">Futuro tecnólogo en Programación — UPTC</div>
-          <div style="margin-top: 12px; display:flex; gap:10px; align-items:center">
+          <div style="margin-top: 12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
             <a class="btn social" href="https://www.facebook.com/juan.barrero.451999" target="_blank" rel="noopener">Facebook</a>
             <a class="btn social" href="https://github.com/juanbarrero-ux" target="_blank" rel="noopener">GitHub</a>
             <a class="btn" href="mailto:juan.barrero@uptc.edu.co">Contactar</a>
@@ -88,16 +88,18 @@
         <aside style="width:360px">
           <div class="card side-panel">
             <h3 style="margin-top:0">Entradas principales</h3>
-            <div class="panel-list">
-              <button class="panel-item" data-target="#post-limites-eticos">Límites éticos</button>
-              <button class="panel-item" data-target="posts/presentacion-etica-digital.html">Presentación: Ética digital</button>
-              <button class="panel-item" data-target="posts/infografia-derechos-autor.html">Infografía: Derechos de Autor</button>
+            <div class="aside-posts">
+              <!-- aside posts populated by JS: small cards showing title and background image -->
             </div>
           </div>
           <div style="height:18px"></div>
-          <div class="card" style="margin-top:6px">
+          <div class="card contact-compact side-panel-contact" style="margin-top:6px">
             <h4 style="margin-top:0">Contacto</h4>
-            <p style="color:var(--muted);font-size:14px;margin:0">Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a> &nbsp; <button class="btn" style="margin-left:8px" data-copy-email="juan.barrero@uptc.edu.co">Copiar correo</button></p>
+            <p style="color:var(--muted);font-size:14px;margin:0">Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a></p>
+            <div style="margin-top:8px;display:flex;gap:8px;">
+              <button class="btn" data-copy-email="juan.barrero@uptc.edu.co">Copiar correo</button>
+              <a class="btn social" href="https://github.com/juanbarrero-ux" target="_blank" rel="noopener">GitHub</a>
+            </div>
           </div>
         </aside>
         
