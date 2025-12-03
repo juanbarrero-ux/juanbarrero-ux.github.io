@@ -8,16 +8,25 @@
     <!-- Reveal.js desde CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.1/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.1/dist/theme/black.css" id="theme">
-    <style>
-      body{font-family:Inter,system-ui,Arial,Helvetica;background:#071029;color:#e6eef6}
-      .reveal{max-width:1100px;margin:28px auto}
-      .byline{color:#9aa4b2;font-size:14px;margin-top:6px}
-      .note{color:#9aa4b2;font-size:13px}
-      a{color:#60c5ff}
-    </style>
+    <link rel="stylesheet" href="/assets/styles.css">
   </head>
   <body>
-    <div class="reveal">
+    <header class="site" style="margin-bottom:18px">
+      <div class="brand">
+        <div class="logo">JB</div>
+        <div>
+          <h1>Juan Pablo Barrero</h1>
+          <div class="meta">Tecnólogo en Programación Informática — UPTC</div>
+        </div>
+      </div>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/">Entradas</a>
+      </nav>
+    </header>
+    <div class="container">
+      <main class="page-card" style="padding:18px">
+        <div class="reveal">
       <div class="slides">
         <section>
           <h2>Ética digital: el pilar del futuro en la red</h2>
@@ -89,6 +98,8 @@
           <p class="note">Creado por Juan Barrero — Aplicado a: Auxiliar de automotores en Alkosto; Estudiante UPTC, Programación de Sistemas Informáticos (1° semestre).</p>
         </section>
       </div>
+        </div>
+      </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.1/dist/reveal.js"></script>
@@ -99,6 +110,9 @@
         height: '100%'
       });
       deck.initialize();
+      // Fix small layout difference on site: ensure reveal adapts to the card width
+      window.addEventListener('load', function(){ setTimeout(()=>{ deck.layout(); }, 120); });
+      window.addEventListener('resize', function(){ deck.layout(); });
     </script>
   </body>
 </html>
