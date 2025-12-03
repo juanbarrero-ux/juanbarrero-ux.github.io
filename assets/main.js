@@ -60,10 +60,16 @@
       var titleEl = pc.querySelector('h4');
       var link = titleEl && titleEl.querySelector('a') ? titleEl.querySelector('a').getAttribute('href') : null;
       var titleText = titleEl ? titleEl.innerText : 'Entrada';
-      var el = document.createElement('button'); el.className='aside-post'; el.setAttribute('type','button');
+      // Get meta info
+      var metaEl = pc.querySelector('.meta');
+      var metaText = metaEl ? metaEl.innerText : '';
+      
+      var el = document.createElement('button'); 
+      el.className='aside-post'; 
+      el.setAttribute('type','button');
       if(link) el.setAttribute('data-target', link);
       el.style.backgroundImage = img ? 'url("'+img+'")' : '';
-      el.innerHTML = '<div class="overlay"><div class="title">'+ titleText +'</div></div>';
+      el.innerHTML = '<div class="overlay"><div class="title">'+ titleText +'</div><div class="meta">'+ metaText +'</div></div>';
       // Reuse click handlers for panel items: open link or scroll to anchor
       el.addEventListener('click', function(){
         var t = el.getAttribute('data-target');
@@ -194,18 +200,33 @@
   var drawerList = drawer && drawer.querySelector('.drawer-list');
   if(drawer && drawerToggle){
     // copy the panel list into drawer list to keep behaviors
-    var originalPanel = document.querySelector('.aside-posts') || document.querySelector('.panel-list');
+    var originalPanel = document.querySelector('.aside-posts');
     if(originalPanel && drawerList){
-      drawerList.innerHTML = originalPanel.innerHTML;
-      // reinitialize aside-post click handlers inside drawer
-      drawer.querySelectorAll('.aside-post').forEach(function(ap){
-        ap.addEventListener('click', function(){
-          var t = ap.getAttribute('data-target');
+      // Clone the aside-posts into the drawer
+      var posts = document.querySelectorAll('.post-card');
+      drawerList.innerHTML = '';
+      posts.forEach(function(pc){
+        var img = pc.getAttribute('data-img');
+        var titleEl = pc.querySelector('h4');
+        var link = titleEl && titleEl.querySelector('a') ? titleEl.querySelector('a').getAttribute('href') : null;
+        var titleText = titleEl ? titleEl.innerText : 'Entrada';
+        var metaEl = pc.querySelector('.meta');
+        var metaText = metaEl ? metaEl.innerText : '';
+        
+        var el = document.createElement('button'); 
+        el.className='aside-post'; 
+        el.setAttribute('type','button');
+        if(link) el.setAttribute('data-target', link);
+        el.style.backgroundImage = img ? 'url("'+img+'")' : '';
+        el.innerHTML = '<div class="overlay"><div class="title">'+ titleText +'</div><div class="meta">'+ metaText +'</div></div>';
+        el.addEventListener('click', function(){
+          var t = el.getAttribute('data-target');
           if(!t) return;
           if(t.startsWith('#')){ var sc=document.querySelector(t); if(sc) sc.scrollIntoView({behavior:'smooth', block:'start'}); }
           else { window.open(t,'_blank'); }
           drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(drawerToggle) drawerToggle.setAttribute('aria-expanded','false');
         });
+        drawerList.appendChild(el);
       });
     }
     drawerToggle.addEventListener('click', function(e){
