@@ -49,6 +49,37 @@
   }
   initPostThumbnails();
 
+  // Populate aside-posts with small versions of the post cards
+  function initAsidePosts(){
+    var aside = document.querySelector('.aside-posts');
+    if(!aside) return;
+    aside.innerHTML = '';
+    var posts = document.querySelectorAll('.post-card');
+    posts.forEach(function(pc){
+      var img = pc.getAttribute('data-img');
+      var titleEl = pc.querySelector('h4');
+      var link = titleEl && titleEl.querySelector('a') ? titleEl.querySelector('a').getAttribute('href') : null;
+      var titleText = titleEl ? titleEl.innerText : 'Entrada';
+      var el = document.createElement('button'); el.className='aside-post'; el.setAttribute('type','button');
+      if(link) el.setAttribute('data-target', link);
+      el.style.backgroundImage = img ? 'url("'+img+'")' : '';
+      el.innerHTML = '<div class="overlay"><div class="title">'+ titleText +'</div></div>';
+      // Reuse click handlers for panel items: open link or scroll to anchor
+      el.addEventListener('click', function(){
+        var t = el.getAttribute('data-target');
+        if(!t) return;
+        if(t.startsWith('#')){
+          var sc = document.querySelector(t);
+          if(sc) sc.scrollIntoView({behavior:'smooth', block:'start'});
+        } else { window.open(t,'_blank'); }
+        // close mobile drawer if open
+        var drawer = document.getElementById('mobile-drawer'); if(drawer && drawer.getAttribute('aria-hidden') === 'false'){ drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; var toggle = document.querySelector('.drawer-toggle'); if(toggle){ toggle.setAttribute('aria-expanded','false') } }
+      });
+      aside.appendChild(el);
+    });
+  }
+  initAsidePosts();
+
   // Panel interactions: scroll to anchor or open link
   function setupPanelItems(root){
     var items = (root||document).querySelectorAll('.panel-item');
@@ -163,11 +194,19 @@
   var drawerList = drawer && drawer.querySelector('.drawer-list');
   if(drawer && drawerToggle){
     // copy the panel list into drawer list to keep behaviors
-    var originalPanel = document.querySelector('.panel-list');
+    var originalPanel = document.querySelector('.aside-posts') || document.querySelector('.panel-list');
     if(originalPanel && drawerList){
       drawerList.innerHTML = originalPanel.innerHTML;
-      // reinitialize panel items inside drawer
-      setupPanelItems(drawer);
+      // reinitialize aside-post click handlers inside drawer
+      drawer.querySelectorAll('.aside-post').forEach(function(ap){
+        ap.addEventListener('click', function(){
+          var t = ap.getAttribute('data-target');
+          if(!t) return;
+          if(t.startsWith('#')){ var sc=document.querySelector(t); if(sc) sc.scrollIntoView({behavior:'smooth', block:'start'}); }
+          else { window.open(t,'_blank'); }
+          drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(drawerToggle) drawerToggle.setAttribute('aria-expanded','false');
+        });
+      });
     }
     drawerToggle.addEventListener('click', function(e){
       var open = drawer.getAttribute('aria-hidden') === 'false';
