@@ -7,13 +7,18 @@
 html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,Helvetica;background:linear-gradient(180deg,var(--bg-900) 0%, var(--bg-800) 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
 .container{max-width:1120px;margin:28px auto;padding:28px}
 header.site{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.site{border-radius:12px;padding:16px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 40px rgba(2,6,23,0.35);}
 .brand{display:flex;align-items:center;gap:14px}
+header.site .meta{font-weight:600}
 .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04263a;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.5);transform-origin:center;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .logo.pulse{transform:scale(1.06) rotate(-4deg)}
 nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
 nav a:hover{color:var(--accent)}
 .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:18px;align-items:start}
 .card{background:var(--card);padding:26px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6);color:inherit}
+.page-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:14px;box-shadow:0 30px 60px rgba(2,12,40,0.6)}
+.page-card h1{font-size:28px}
+.page-card .lead{font-size:16px}
 
 /* Hero visual background & glass card styling */
 .hero{position:relative;padding:32px;border-radius:18px;overflow:hidden}
@@ -73,13 +78,35 @@ footer.site{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 /* Improve readability for content lists */
 ol,ul{line-height:1.6}
 
+/* Modal for infographic */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:1200;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.modal-overlay.visible{opacity:1;pointer-events:auto}
+.modal-content{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));max-width:92%;max-height:92%;overflow:auto;border-radius:12px;padding:12px;box-shadow:0 20px 60px rgba(2,6,23,0.6)}
+.modal-content img{width:100%;height:auto;display:block}
+.modal-close{position:absolute;right:14px;top:14px;background:rgba(0,0,0,0.4);border:none;color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer}
+
 /* Posts grid */
 .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
 .post-card{padding:22px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;border-radius:12px;transition:transform .22s ease, box-shadow .22s ease}
 .post-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,12,40,0.45)}
+.post-card::before{content:'';display:block;height:6px;width:100%;border-radius:8px 8px 0 0;background:linear-gradient(90deg,var(--accent),var(--accent-2));margin:-22px -22px 12px -22px}
+.post-card{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .post-card h4{margin:0 0 8px;color:#fff}
 .post-card .meta{font-size:12px;color:var(--muted);margin-bottom:8px}
 .post-card .muted{font-size:13px;margin-bottom:16px}
 .post-card a.btn{display:inline-flex;align-items:center;gap:8px}
 
 @media (max-width:980px){.posts-grid{grid-template-columns:1fr}} 
+
+/* Markmap fallback (plain outline when interactive map not available) */
+.markmap-fallback-wrapper{padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border-radius:10px;height:100%;overflow:auto}
+.markmap-fallback h1,.markmap-fallback h2,.markmap-fallback h3{margin:6px 0;color:#eef9ff}
+.markmap-fallback ul{margin:6px 0 10px 18px;color:var(--muted)}
+.markmap-fallback li{margin:4px 0}
+.markmap-fallback h1{font-size:18px}
+.markmap-fallback h2{font-size:15px}
+.markmap-fallback h3{font-size:13px}
+
+/* Slightly stronger card visual on hover for posts */
+.post-card:hover{transform:translateY(-10px) scale(1.01);box-shadow:0 30px 60px rgba(2,12,40,0.5)}
+
