@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Infografía: Derechos de Autor — Juan Barrero</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="site" style="margin-bottom:18px">
+        <div class="brand">
+          <div class="logo">JB</div>
+          <div>
+            <h1>Infografía — Derechos de Autor</h1>
+            <div class="meta">Moral • Patrimoniales • Explotación • Licencias</div>
+          </div>
+        </div>
+        <nav>
+          <a href="/">Inicio</a>
+        </nav>
+      </header>
+
+      <main class="card">
+        <h2>Infografía: Derechos de autor — conceptos y licencias</h2>
+        <p class="lead">Una presentación visual de los derechos que protegen las obras (creaciones) y un resumen práctico de modelos de licencias y su uso en proyectos tecnológicos.</p>
+
+        <section style="margin-top:18px">
+          <h3>Infografía</h3>
+          <div class="video" style="padding:0">
+            <!-- Placeholder: replace src con tu propia imagen/infografía -->
+            <img alt="Infografía: derechos de autor" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80" style="width:100%;height:auto;border-radius:8px;display:block">
+          </div>
+          <p style="color:var(--muted);font-size:14px;margin-top:8px">Sustituye la imagen anterior por tu infografía: sube un archivo a `assets/` y cambia el atributo `src`.</p>
+        </section>
+
+        <section style="margin-top:18px">
+          <h3>Resumen de derechos</h3>
+          <ul>
+            <li><strong>Derecho moral:</strong> derechos personales del autor que no son transmisibles (paternidad, integridad de la obra).</li>
+            <li><strong>Derechos patrimoniales / de explotación:</strong> derechos de reproducir, comunicar públicamente, distribuir, transformar la obra con fines económicos.</li>
+            <li><strong>Derechos conexos:</strong> intérpretes, productores y emisoras.</li>
+          </ul>
+        </section>
+
+        <section style="margin-top:18px">
+          <h3>Modelos de licencia (resumen)</h3>
+          <dl>
+            <dt>Copyright</dt>
+            <dd>Protección por defecto; el autor tiene todos los derechos salvo excepciones. No autoriza a terceros a usar la obra.</dd>
+
+            <dt>Creative Commons (CC)</dt>
+            <dd>Familia de licencias para obras creativas; permite parametrizar uso con condiciones (BY, NC, SA, ND).</dd>
+
+            <dt>Copyleft / GNU</dt>
+            <dd>Licencias que obligan a mantener la misma libertad sobre copias y trabajos derivados (p. ej., GPL).</dd>
+
+            <dt>LGPL (Lesser GPL)</dt>
+            <dd>Permite usar una librería en proyectos propietarios sin aplicar copyleft a todo el producto; el código en la librería sigue siendo libre.</dd>
+
+            <dt>Dominio Público</dt>
+            <dd>La obra no tiene derechos reservados y puede usarse libremente, sin condiciones.</dd>
+          </dl>
+        </section>
+
+        <section style="margin-top:18px">
+          <h3>Licencias recomendadas para un tecnólogo en programación</h3>
+          <p>Como tecnólogo que desarrolla sistemas informáticos, éstas son dos propuestas con su implementación práctica:</p>
+
+          <h4>1) <em>MIT</em> (licencia permisiva)</h4>
+          <p><strong>Qué es:</strong> licencia muy corta y permisiva; permite uso, copia, modificación y distribución, también para proyectos propietarios. Requiere conservar el aviso de copyright y la licencia.</p>
+          <p><strong>Cómo implementarla:</strong></p>
+          <ol>
+            <li>Añade un archivo <code>LICENSE</code> en la raíz del repositorio con el texto de MIT (incluye tu nombre y año).</li>
+            <li>En tu <code>package.json</code> (si aplica), añade <code>"license": "MIT"</code>.</li>
+            <li>Agrega cabeceras de licencia en los archivos fuente en formato de comentario (opcional pero recomendable).</li>
+            <li>Incluye en README una sección de <em>Licencia</em> y cómo contribuir in-project (ej.: CLA o firmar pull-requests si lo deseas).</li>
+          </ol>
+
+          <h4>2) <em>GNU Lesser General Public License (LGPL)</em> (para librerías)</h4>
+          <p><strong>Qué es:</strong> una licencia que protege el código de la librería con copyleft pero permite enlazar la librería desde software propietario sin obligar a abrir el resto del código. Adecuada si desarrollas librerías que quieres que permanezcan libres.</p>
+          <p><strong>Cómo implementarla:</strong></p>
+          <ol>
+            <li>Añade un archivo <code>COPYING.LESSER</code> con el texto de LGPL en la raíz del repositorio.</li>
+            <li>En los archivos fuente de la librería incluye la cabecera de licencia (comentarios en cada archivo de la librería con copyright y licencia).</li>
+            <li>En README aclara cómo enlazar y usar la librería, y qué condiciones aplican (por ejemplo, si se cambia la librería, esas modificaciones deben publicarse).</li>
+            <li>Si publicas paquetes (npm,pypi), en el manifest indica <code>license: LGPL-3.0-or-later</code> o similar según la versión.</li>
+          </ol>
+        </section>
+
+        <section style="margin-top:18px">
+          <h3>Recomendaciones prácticas</h3>
+          <ul>
+            <li>Usa <code>SPDX</code> identifiers (ej. <code>MIT</code>, <code>LGPL-3.0-or-later</code>) para facilitar la automatización.</li>
+            <li>Incluye un archivo <code>CONTRIBUTING.md</code> con la política de aceptaciones y copyright para colaboradores.</li>
+            <li>Si tu proyecto contiene documentación y recursos multimedia (infografías), aplica licencias Creative Commons si quieres permitir reutilización no comercial o con atribución.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <footer class="site">
+        © 2025 Juan Barrero — Derechos de Autor & Licencias
+      </footer>
+    </div>
+  </body>
+</html>
