@@ -21,17 +21,30 @@
         </nav>
       </header>
 
-      <main class="card">
+      <main class="card page-card">
         <h2>Infografía: Derechos de autor — conceptos y licencias</h2>
         <p class="lead">Una presentación visual de los derechos que protegen las obras (creaciones) y un resumen práctico de modelos de licencias y su uso en proyectos tecnológicos.</p>
 
         <section style="margin-top:18px">
           <h3>Infografía</h3>
           <div class="video" style="padding:0">
-            <!-- Placeholder: replace src con tu propia imagen/infografía -->
-            <img alt="Infografía: derechos de autor" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80" style="width:100%;height:auto;border-radius:8px;display:block">
+            <!-- Infographic (SVG - local resource) -->
+            <img id="post-infografia-img" alt="Infografía: derechos de autor" src="/assets/infografia-derechos-autor.svg" style="width:100%;height:auto;border-radius:8px;display:block">
+          </div>
+          <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
+            <button class="btn" data-modal-target="/assets/infografia-derechos-autor.svg" id="open-infografia">Ver infografía</button>
+            <a class="btn" href="/assets/infografia-derechos-autor.svg" download="infografia-derechos-autor.svg">Descargar SVG</a>
+            <button class="btn" id="toggle-licenses">Alternar detalles de licencias</button>
+          </div>
+          <div id="licenses-details" style="display:none;margin-top:10px">
+            <p class="muted" style="margin:0">Esto muestra información extendida sobre licencias que pueden afectar la reutilización, distribución y derechos de explotación. (CC-BY, MIT, LGPL, GPL, Domenio Público)</p>
           </div>
           <p style="color:var(--muted);font-size:14px;margin-top:8px">Sustituye la imagen anterior por tu infografía: sube un archivo a `assets/` y cambia el atributo `src`.</p>
+        </section>
+
+        <section style="margin-top:18px">
+          <h3>Contacto / Autor</h3>
+          <p class="muted">Juan Barrero — Correo: <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a> &nbsp; <button class="btn" data-copy-email="juan.barrero@uptc.edu.co">Copiar correo</button></p>
         </section>
 
         <section style="margin-top:18px">
