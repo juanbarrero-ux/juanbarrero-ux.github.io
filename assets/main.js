@@ -31,27 +31,9 @@
   themeBtn.addEventListener('click', function(){ document.body.classList.toggle('light-mode'); });
   var nav = qs('nav'); if(nav) nav.appendChild(themeBtn);
 
-  // Ensure markmap instance fit after it becomes available
-  function tryFit(){
-    try{ if(window.__markmap && typeof window.__markmap.fit==='function') window.__markmap.fit(); }
-    catch(e){/* ignore */}
-  }
-  // Try a few times (map may initialize after scripts load)
-  [300,800,1500,3000].forEach(function(t){ setTimeout(tryFit,t) });
+  // Markmap removed — no fit calls needed
 
-  // If the #mindmap element receives an SVG child, call fit again (helpful when map loads late)
-  (function observeMindmapSVG(){
-    var container = document.getElementById('mindmap');
-    if(!container) return;
-    var mo = new MutationObserver(function(mutations){
-      mutations.forEach(function(m){
-        m.addedNodes && m.addedNodes.forEach(function(n){
-          if(n.nodeName && n.nodeName.toLowerCase()==='svg'){ tryFit(); }
-        })
-      })
-    });
-    mo.observe(container, {childList:true, subtree:false});
-  })();
+  // Mindmap removed: no observation needed
 
   // Set thumbnails for post cards from data-img attribute
   function initPostThumbnails(){
