@@ -18,6 +18,7 @@ header.site .meta{color:var(--muted);font-size:13px}
 nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
 nav a:hover{color:var(--accent)}
 .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:18px;align-items:start}
+.hero aside{grid-column:2/3;align-self:start}
 .card{background:var(--card);padding:26px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6);color:inherit}
 .page-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:14px;box-shadow:0 30px 60px rgba(2,12,40,0.6)}
 .page-card h1{font-size:28px}
@@ -59,6 +60,22 @@ h1,h2,h3{margin:0}
 h1{font-size:22px;color:#f6fbff;font-weight:700}
 /* Cyberpunk headings */
 h2, h3, .brand h1{font-family: 'Orbitron', system-ui, Arial, sans-serif}
+.reveal h2{font-weight:700;font-size:34px;color:transparent;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text}
+.reveal h3{color:#eaf6ff}
+.reveal p{color:var(--muted);font-size:16px}
+.reveal .slides{min-height:420px}
+
+/* Reveal slide styling to match site theme */
+.reveal .slides section{
+  background: linear-gradient(180deg, rgba(5,9,20,0.6), rgba(8,10,20,0.6));
+  border-radius:12px;
+  padding:28px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+}
+.reveal .slides section[data-background-opacity] {
+  background-clip: padding-box;
+}
+.reveal .slides .speaker-notes{color:var(--muted)}
 h2{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 h1.gradient{background:linear-gradient(90deg,var(--accent),#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent}
 h2{font-weight:700;color:#eaf6ff;text-shadow:0 4px 32px rgba(2,22,45,0.35)}
@@ -67,9 +84,7 @@ p.lead{color:var(--muted);margin-top:10px;line-height:1.6}
 .meta{color:var(--muted);font-size:13px;margin-top:8px}
 .video{border-radius:10px;overflow:hidden}
 .content h2{margin-top:8px}
-.mindmap{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;height:420px;display:flex;flex-direction:column;backdrop-filter:blur(6px)}
-.mindmap #mindmap{flex:1;border-radius:8px;overflow:hidden}
-.mindmap .note{margin-top:8px}
+/* Removed mindmap styles as the interactive map was deleted */
 .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
 .btn{background:linear-gradient(180deg,var(--accent),#38bdf8);color:#04263a;border:none;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
 .btn.social{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 6px 22px rgba(0,240,255,0.06);}
@@ -77,7 +92,10 @@ p.lead{color:var(--muted);margin-top:10px;line-height:1.6}
 .btn.neon{box-shadow:0 0 36px rgba(0,240,255,0.4), 0 0 12px rgba(255,47,166,0.12);transform:scale(1.02)}
 .muted{color:var(--muted)}
 footer.site{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-@media (max-width:980px){.hero{grid-template-columns:1fr}.mindmap{height:300px}}
+@media (max-width:980px){.hero{grid-template-columns:1fr}}
+.hero aside{position:relative}
+.hero aside .side-panel{position:sticky;top:96px}
+.hero aside .side-panel .panel-list{max-height:calc(100vh - 180px);overflow:auto}
 
 /* Small interactions */
 .fade-in{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
@@ -124,14 +142,7 @@ ol,ul{line-height:1.6}
 
 @media (max-width:980px){.posts-grid{grid-template-columns:1fr}} 
 
-/* Markmap fallback (plain outline when interactive map not available) */
-.markmap-fallback-wrapper{padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border-radius:10px;height:100%;overflow:auto}
-.markmap-fallback h1,.markmap-fallback h2,.markmap-fallback h3{margin:6px 0;color:#eef9ff}
-.markmap-fallback ul{margin:6px 0 10px 18px;color:var(--muted)}
-.markmap-fallback li{margin:4px 0}
-.markmap-fallback h1{font-size:18px}
-.markmap-fallback h2{font-size:15px}
-.markmap-fallback h3{font-size:13px}
+/* Removed Markmap fallback styles */
 
 /* Slightly stronger card visual on hover for posts */
 .post-card:hover{transform:translateY(-10px) scale(1.01);box-shadow:0 30px 60px rgba(2,12,40,0.5)}
