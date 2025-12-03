@@ -86,7 +86,7 @@ p.lead{color:var(--muted);margin-top:10px;line-height:1.6}
 .content h2{margin-top:8px}
 /* Removed mindmap styles as the interactive map was deleted */
 .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
-.btn{background:linear-gradient(180deg,var(--accent),#38bdf8);color:#04263a;border:none;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+.btn{background:linear-gradient(180deg,var(--accent),#38bdf8);color:#04263a;border:none;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap}
 .btn.social{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 6px 22px rgba(0,240,255,0.06);}
 .btn.social:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,240,255,0.16)}
 .btn.neon{box-shadow:0 0 36px rgba(0,240,255,0.4), 0 0 12px rgba(255,47,166,0.12);transform:scale(1.02)}
@@ -107,6 +107,8 @@ footer.site{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 .drawer-close{position:absolute;right:16px;top:16px;border:none;background:transparent;color:#fff;font-size:20px}
 .drawer-list{margin-top:24px;display:flex;flex-direction:column;gap:10px}
 .drawer-list .panel-item{padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.02);}
+.drawer-list .aside-post{height:84px;border-radius:8px;background-size:cover;background-position:center;overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+.drawer-list .aside-post .overlay{padding:8px}
 
 /* Small interactions */
 .fade-in{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
@@ -144,6 +146,18 @@ ol,ul{line-height:1.6}
 .panel-item:hover{box-shadow:0 10px 30px rgba(0,240,255,0.06);transform:translateY(-2px)}
 .panel-item.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04263a;font-weight:700}
 
+/* Aside posts - compact vertical cards with background thumbnails */
+.aside-posts{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.aside-post{height:92px;border-radius:10px;background-size:cover;background-position:center;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+.aside-post .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6));padding:10px;display:flex;flex-direction:column;justify-content:flex-end}
+.aside-post .title{color:#fff;font-weight:700;font-size:14px;line-height:1.1}
+.aside-post .meta{color:var(--muted);font-size:12px;margin-top:4px}
+.aside-post:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+
+/* Contact compact area */
+.side-panel .contact-compact{margin-top:14px;border-radius:8px;padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+.side-panel .contact-compact .btn{padding:8px 10px;font-size:13px}
+
 .post-card::before{content:'';display:block;height:6px;width:100%;border-radius:8px 8px 0 0;background:linear-gradient(90deg,var(--accent),var(--accent-2));margin:-22px -22px 12px -22px}
 .post-card{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .post-card h4{margin:0 0 8px;color:#fff}
@@ -158,6 +172,12 @@ ol,ul{line-height:1.6}
   header.site{padding-right:64px}
   .hero{grid-template-columns:1fr}
   .hero aside{display:none}
+}
+/* Slightly smaller buttons on small screens */
+@media (max-width:600px){
+  .btn{padding:6px 8px;font-size:13px}
+  .btn.social{padding:6px 10px}
+  .aside-post{height:84px}
 }
 
 /* Removed Markmap fallback styles */
