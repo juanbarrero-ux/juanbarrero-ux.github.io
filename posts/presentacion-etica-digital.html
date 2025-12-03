@@ -8,7 +8,145 @@
     <!-- Reveal.js desde CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.1/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.1/dist/theme/black.css" id="theme">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/styles.css">
+    <style>
+      /* Custom Reveal.js styles for this presentation */
+      .reveal {
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      .reveal .slides {
+        text-align: left;
+      }
+      .reveal .slides section {
+        background: linear-gradient(135deg, rgba(6,6,10,0.95), rgba(11,11,16,0.98));
+        border: 1px solid rgba(0,240,255,0.1);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+      }
+      .reveal h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2em;
+        background: linear-gradient(90deg, #00f0ff, #ff2fa6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: none;
+      }
+      .reveal h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.6em;
+        color: #00f0ff;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .reveal h4 {
+        font-size: 1.1em;
+        color: #ff2fa6;
+        margin: 20px 0 10px;
+        font-weight: 600;
+      }
+      .reveal p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.85);
+      }
+      .reveal .byline {
+        text-align: center;
+        font-size: 0.95em;
+        color: #9aa4b2;
+      }
+      .reveal .byline a {
+        color: #00f0ff;
+      }
+      .reveal .note {
+        text-align: center;
+        font-size: 0.85em;
+        color: #ff2fa6;
+        font-style: italic;
+      }
+      .reveal ul, .reveal ol {
+        font-size: 1em;
+        line-height: 1.8;
+      }
+      .reveal li {
+        margin-bottom: 12px;
+        color: rgba(255,255,255,0.8);
+      }
+      .reveal a {
+        color: #00f0ff;
+      }
+      /* Slide backgrounds */
+      .reveal .slides section:nth-child(1) {
+        background: linear-gradient(135deg, rgba(6,6,10,0.9), rgba(11,11,16,0.95)), url('/IMAGENES/premium_photo-1685148902854-9b9bb49fff08.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+      .reveal .slides section:nth-child(4),
+      .reveal .slides section:nth-child(5),
+      .reveal .slides section:nth-child(6) {
+        background: linear-gradient(135deg, rgba(6,6,10,0.92), rgba(11,11,16,0.96)), url('/IMAGENES/20646dff8dd3ad17a3cc01c625bdb146.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+      /* Feature cards */
+      .feature-card {
+        background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(255,47,166,0.05));
+        border: 1px solid rgba(0,240,255,0.15);
+        border-radius: 14px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .feature-card h4 {
+        margin-top: 0;
+      }
+      /* Icon badges */
+      .icon-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #00f0ff, #ff2fa6);
+        border-radius: 50%;
+        font-size: 24px;
+        margin-right: 15px;
+      }
+      /* Conclusion list */
+      .reveal .conclusion-list li {
+        background: linear-gradient(90deg, rgba(0,240,255,0.1), transparent);
+        padding: 12px 18px;
+        border-left: 3px solid #00f0ff;
+        margin-bottom: 10px;
+        border-radius: 0 8px 8px 0;
+      }
+      /* Navigation hint */
+      .nav-hint {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: rgba(255,255,255,0.4);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-hint span {
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateX(0) }
+        50% { transform: translateX(5px) }
+      }
+    </style>
   </head>
   <body>
     <header class="site" style="margin-bottom:18px">
@@ -20,84 +158,159 @@
         </div>
       </div>
       <nav>
-        <a href="/">Inicio</a>
-        <a href="/">Entradas</a>
+        <a href="/">← Inicio</a>
+        <a href="/#posts">Entradas</a>
       </nav>
     </header>
     <div class="container">
-      <main class="page-card" style="padding:18px">
+      <main class="page-card" style="padding:24px;background:linear-gradient(180deg, rgba(6,6,10,0.98), rgba(11,11,16,0.99));border:1px solid rgba(0,240,255,0.08)">
         <div class="reveal">
-      <div class="slides">
-        <section>
-          <h2>Ética digital: el pilar del futuro en la red</h2>
-          <p class="byline">Presentación interactiva basada en: <a href="https://www.iebschool.com/hub/etica-digital-el-pilar-del-futuro-en-la-red-innovacion/" target="_blank" rel="noopener">IEBS — Ética digital</a></p>
-          <p class="note">Autor: Juan Barrero — Reflexiones adaptadas al entorno laboral y académico</p>
-        </section>
+          <div class="slides">
+            <!-- Slide 1: Portada -->
+            <section>
+              <h2>⚡ Ética digital: el pilar del futuro en la red</h2>
+              <p class="byline">Presentación interactiva basada en: <a href="https://www.iebschool.com/hub/etica-digital-el-pilar-del-futuro-en-la-red-innovacion/" target="_blank" rel="noopener">IEBS — Ética digital</a></p>
+              <p class="note">👤 Autor: Juan Pablo Barrero Contreas<br>🎓 Estudiante UPTC — Programación de Sistemas Informáticos</p>
+              <div style="text-align:center;margin-top:30px">
+                <span style="font-size:40px">🤖 💻 🔐 🌐</span>
+              </div>
+            </section>
 
-        <section>
-          <h3>Objetivo</h3>
-          <p>Identificar tres características que debe tener la concepción de la tecnología, explicar cada una y mostrar cómo las aplico en mi entorno laboral (Auxiliar de automotores en Alkosto) y académico (estudiante UPTC, 1º semestre Programación de Sistemas Informáticos).</p>
-        </section>
+            <!-- Slide 2: Objetivo -->
+            <section>
+              <h3>🎯 Objetivo</h3>
+              <p>Identificar <strong>tres características</strong> que debe tener la concepción de la tecnología, explicar cada una y mostrar cómo las aplico en:</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">
+                <div class="feature-card">
+                  <h4>🏪 Entorno Laboral</h4>
+                  <p style="font-size:0.95em">Auxiliar de Automotores en <strong>Alkosto</strong></p>
+                </div>
+                <div class="feature-card">
+                  <h4>📚 Entorno Académico</h4>
+                  <p style="font-size:0.95em">Estudiante UPTC, 1° semestre<br>Programación de Sistemas</p>
+                </div>
+              </div>
+            </section>
 
-        <section>
-          <h3>Resumen del artículo</h3>
-          <p>El artículo plantea que la ética digital es clave para orientar innovación responsable: se requieren principios aplicables a diseño, gobernanza y uso. Destaca la necesidad de transparencia, protección de la privacidad y formación ciudadana para sostener un ecosistema digital sano.</p>
-        </section>
+            <!-- Slide 3: Resumen -->
+            <section>
+              <h3>📖 Resumen del artículo</h3>
+              <p>El artículo plantea que la <strong>ética digital</strong> es clave para orientar innovación responsable:</p>
+              <ul style="margin-top:20px">
+                <li>✅ Principios aplicables a <strong>diseño, gobernanza y uso</strong></li>
+                <li>✅ Necesidad de <strong>transparencia</strong></li>
+                <li>✅ Protección de la <strong>privacidad</strong></li>
+                <li>✅ Formación ciudadana para un ecosistema digital sano</li>
+              </ul>
+            </section>
 
-        <section>
-          <h3>Característica 1: Centrado en las personas (Human-centered)</h3>
-          <p>La tecnología debe diseñarse para mejorar capacidades humanas, preservar dignidad y priorizar el bienestar colectivo por encima de métricas puramente comerciales.</p>
-          <section>
-            <h4>Aplicación laboral — Alkosto</h4>
-            <p>En atención a clientes y diagnóstico automotriz: priorizar interfaces claras para clientes, proteger datos personales (números de teléfono, historial de vehículos), y asegurar que las recomendaciones automáticas (p. ej. diagnósticos) estén explicadas y verificables por un técnico.</p>
-            <h4>Aplicación académica — UPTC</h4>
-            <p>Como estudiante, aplicar el enfoque humano al escribir código: documentar decisiones, crear interfaces pedagógicas simples y considerar la experiencia de usuario en proyectos de clase.</p>
-          </section>
-        </section>
+            <!-- Slide 4: Característica 1 -->
+            <section>
+              <h3><span class="icon-badge">👤</span> Característica 1: Centrado en las personas</h3>
+              <p>La tecnología debe diseñarse para <strong>mejorar capacidades humanas</strong>, preservar dignidad y priorizar el bienestar colectivo por encima de métricas puramente comerciales.</p>
+            </section>
+            <section>
+              <h4>🏪 Aplicación laboral — Alkosto</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Priorizar interfaces claras para clientes</li>
+                  <li>Proteger datos personales (teléfonos, historial de vehículos)</li>
+                  <li>Asegurar que diagnósticos automáticos sean verificables por técnico</li>
+                </ul>
+              </div>
+              <h4>📚 Aplicación académica — UPTC</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Documentar decisiones al escribir código</li>
+                  <li>Crear interfaces pedagógicas simples</li>
+                  <li>Considerar experiencia de usuario en proyectos</li>
+                </ul>
+              </div>
+            </section>
 
-        <section>
-          <h3>Característica 2: Transparencia y responsabilidad</h3>
-          <p>Sistemas que deben ser auditables: saber cómo funcionan, qué datos usan y quién responde por su comportamiento.</p>
-          <section>
-            <h4>Aplicación laboral — Alkosto</h4>
-            <p>Registrar procedimientos para diagnósticos asistidos por software; conservar logs de decisiones automáticas; y exigir explicaciones cuando un sistema sugiere reparaciones o ventas.</p>
-            <h4>Aplicación académica — UPTC</h4>
-            <p>Mantener repositorios con control de versiones, comentar el código, y aprender a producir pequeños informes de pruebas que permitan reproducir resultados.</p>
-          </section>
-        </section>
+            <!-- Slide 5: Característica 2 -->
+            <section>
+              <h3><span class="icon-badge">🔍</span> Característica 2: Transparencia y responsabilidad</h3>
+              <p>Sistemas que deben ser <strong>auditables</strong>: saber cómo funcionan, qué datos usan y quién responde por su comportamiento.</p>
+            </section>
+            <section>
+              <h4>🏪 Aplicación laboral — Alkosto</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Registrar procedimientos para diagnósticos asistidos por software</li>
+                  <li>Conservar logs de decisiones automáticas</li>
+                  <li>Exigir explicaciones cuando el sistema sugiere reparaciones</li>
+                </ul>
+              </div>
+              <h4>📚 Aplicación académica — UPTC</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Mantener repositorios con control de versiones</li>
+                  <li>Comentar el código exhaustivamente</li>
+                  <li>Producir informes de pruebas reproducibles</li>
+                </ul>
+              </div>
+            </section>
 
-        <section>
-          <h3>Característica 3: Responsabilidad y sostenibilidad</h3>
-          <p>Adoptar prácticas que minimicen daño, protejan la privacidad y piensen en consecuencias a largo plazo — tanto técnicas como sociales.</p>
-          <section>
-            <h4>Aplicación laboral — Alkosto</h4>
-            <p>Evitar soluciones que compartan datos de clientes sin consentimiento; diseñar procesos que permitan corregir errores del sistema y capacitar al personal en medidas de seguridad básica.</p>
-            <h4>Aplicación académica — UPTC</h4>
-            <p>Fomentar proyectos sostenibles: reutilizar código, documentar dependencias y considerar implicaciones éticas en prácticas y trabajos.</p>
-          </section>
-        </section>
+            <!-- Slide 6: Característica 3 -->
+            <section>
+              <h3><span class="icon-badge">🌱</span> Característica 3: Sostenibilidad</h3>
+              <p>Adoptar prácticas que <strong>minimicen daño</strong>, protejan la privacidad y piensen en consecuencias a largo plazo — tanto técnicas como sociales.</p>
+            </section>
+            <section>
+              <h4>🏪 Aplicación laboral — Alkosto</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Evitar soluciones que compartan datos sin consentimiento</li>
+                  <li>Diseñar procesos que permitan corregir errores del sistema</li>
+                  <li>Capacitar al personal en seguridad básica</li>
+                </ul>
+              </div>
+              <h4>📚 Aplicación académica — UPTC</h4>
+              <div class="feature-card">
+                <ul style="margin:0">
+                  <li>Fomentar proyectos sostenibles: reutilizar código</li>
+                  <li>Documentar dependencias</li>
+                  <li>Considerar implicaciones éticas en prácticas</li>
+                </ul>
+              </div>
+            </section>
 
-        <section>
-          <h3>Conclusión y recomendaciones</h3>
-          <ul>
-            <li>Implementar políticas internas — checklists éticos para despliegue.</li>
-            <li>Formación continua para empleados en privacidad y uso responsable.</li>
-            <li>Documentación y trazabilidad como práctica estándar.</li>
-          </ul>
-        </section>
+            <!-- Slide 7: Conclusión -->
+            <section>
+              <h3>✅ Conclusión y recomendaciones</h3>
+              <ul class="conclusion-list" style="list-style:none;padding:0">
+                <li>📋 Implementar <strong>políticas internas</strong> — checklists éticos para despliegue</li>
+                <li>🎓 <strong>Formación continua</strong> para empleados en privacidad y uso responsable</li>
+                <li>📝 <strong>Documentación y trazabilidad</strong> como práctica estándar</li>
+              </ul>
+            </section>
 
-        <section>
-          <h3>Actividad interactiva</h3>
-          <p>Piensa en una situación real en Alkosto donde una recomendación automatizada pudiera afectar a un cliente. ¿Qué medidas éticas aplicarías para mitigarlo?</p>
-          <p class="note">(Usa las flechas para avanzar; esta slide es para reflexión y puede servir como guía de discusión.)</p>
-        </section>
+            <!-- Slide 8: Actividad -->
+            <section>
+              <h3>💭 Actividad interactiva</h3>
+              <div class="feature-card" style="text-align:center;padding:30px">
+                <p style="font-size:1.2em">Piensa en una situación real en <strong>Alkosto</strong> donde una recomendación automatizada pudiera afectar a un cliente.</p>
+                <p style="font-size:1.3em;margin-top:20px">🤔 <strong>¿Qué medidas éticas aplicarías?</strong></p>
+              </div>
+              <p class="note" style="margin-top:20px">💡 Esta slide es para reflexión y discusión grupal</p>
+            </section>
 
-        <section>
-          <h3>Referencias</h3>
-          <p><a href="https://www.iebschool.com/hub/etica-digital-el-pilar-del-futuro-en-la-red-innovacion/" target="_blank" rel="noopener">IEBS — Ética digital: el pilar del futuro en la red</a></p>
-          <p class="note">Creado por Juan Barrero — Aplicado a: Auxiliar de automotores en Alkosto; Estudiante UPTC, Programación de Sistemas Informáticos (1° semestre).</p>
-        </section>
-      </div>
+            <!-- Slide 9: Referencias -->
+            <section>
+              <h3>📚 Referencias</h3>
+              <div class="feature-card">
+                <p>🔗 <a href="https://www.iebschool.com/hub/etica-digital-el-pilar-del-futuro-en-la-red-innovacion/" target="_blank" rel="noopener">IEBS — Ética digital: el pilar del futuro en la red</a></p>
+              </div>
+              <div style="margin-top:30px;text-align:center;padding:20px;background:linear-gradient(135deg, rgba(0,240,255,0.1), rgba(255,47,166,0.1));border-radius:14px">
+                <p style="margin:0;font-size:1.1em"><strong>👤 Juan Pablo Barrero Contreas</strong></p>
+                <p style="margin:8px 0 0;color:#9aa4b2">Auxiliar de Automotores — Alkosto<br>Estudiante UPTC, Programación de Sistemas (1° semestre)</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="nav-hint">
+          Usa las flechas ← → para navegar <span>→</span>
         </div>
       </main>
     </div>
@@ -107,10 +320,12 @@
       const deck = new Reveal({
         hash: true,
         width: '100%',
-        height: '100%'
+        height: '100%',
+        margin: 0.1,
+        transition: 'slide',
+        backgroundTransition: 'fade'
       });
       deck.initialize();
-      // Fix small layout difference on site: ensure reveal adapts to the card width
       window.addEventListener('load', function(){ setTimeout(()=>{ deck.layout(); }, 120); });
       window.addEventListener('resize', function(){ deck.layout(); });
     </script>
