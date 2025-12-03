@@ -39,6 +39,20 @@
   // Try a few times (map may initialize after scripts load)
   [300,800,1500,3000].forEach(function(t){ setTimeout(tryFit,t) });
 
+  // If the #mindmap element receives an SVG child, call fit again (helpful when map loads late)
+  (function observeMindmapSVG(){
+    var container = document.getElementById('mindmap');
+    if(!container) return;
+    var mo = new MutationObserver(function(mutations){
+      mutations.forEach(function(m){
+        m.addedNodes && m.addedNodes.forEach(function(n){
+          if(n.nodeName && n.nodeName.toLowerCase()==='svg'){ tryFit(); }
+        })
+      })
+    });
+    mo.observe(container, {childList:true, subtree:false});
+  })();
+
   // Parallax for hero background
   var heroBg = qs('.hero-bg');
   if(heroBg){
@@ -51,6 +65,42 @@
     // initial call
     onScroll();
   }
+
+  // Modal logic: show SVG in overlay
+  function createModal(){
+    if(qs('.modal-overlay')) return;
+    var overlay = document.createElement('div'); overlay.className='modal-overlay';
+    var content = document.createElement('div'); content.className='modal-content';
+    var close = document.createElement('button'); close.className='modal-close'; close.textContent='Cerrar';
+    overlay.appendChild(content); overlay.appendChild(close); document.body.appendChild(overlay);
+    close.addEventListener('click', function(){ overlay.classList.remove('visible'); overlay.querySelector('.modal-content').innerHTML=''; });
+    overlay.addEventListener('click', function(e){ if(e.target===overlay){ overlay.classList.remove('visible'); overlay.querySelector('.modal-content').innerHTML=''; } });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') overlay.classList.remove('visible'); });
+  }
+  createModal();
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-modal-target]');
+    if(!btn) return;
+    e.preventDefault();
+    var url = btn.getAttribute('data-modal-target');
+    var overlay = qs('.modal-overlay');
+    var content = overlay.querySelector('.modal-content');
+    // load image
+    content.innerHTML = '<img src="'+url+'" alt="Infografía">';
+    overlay.classList.add('visible');
+  });
+
+  // Toggle license details
+  var toggleBtn = qs('#toggle-licenses');
+  if(toggleBtn){ toggleBtn.addEventListener('click', function(){ var el = qs('#licenses-details'); if(el){ el.style.display = el.style.display==='none' ? 'block' : 'none'; } }) }
+
+  // Copy email helper (for contact card)
+  function attachCopyEmail(){
+    var emailEls = document.querySelectorAll('[data-copy-email]');
+    emailEls.forEach(function(btn){ btn.addEventListener('click', function(){ var text=btn.getAttribute('data-copy-email'); if(navigator.clipboard){ navigator.clipboard.writeText(text).then(function(){ btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar correo',1400); }); } }) });
+  }
+  attachCopyEmail();
 
   // Animate the badge into view
   var badge = qs('.badge');
