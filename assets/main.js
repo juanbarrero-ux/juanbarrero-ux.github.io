@@ -53,6 +53,67 @@
     mo.observe(container, {childList:true, subtree:false});
   })();
 
+  // Set thumbnails for post cards from data-img attribute
+  function initPostThumbnails(){
+    var posts = document.querySelectorAll('.post-card');
+    posts.forEach(function(card){
+      var img = card.getAttribute('data-img');
+      var thumb = card.querySelector('.thumb');
+      if(!thumb) return;
+      if(img){ thumb.style.backgroundImage = 'url("' + img + '")'; }
+      // set entire card background image with a subtle cover
+      if(img){ card.style.backgroundImage = 'url("' + img + '")'; card.style.backgroundSize = 'cover'; card.style.backgroundPosition = 'center'; card.style.backgroundRepeat='no-repeat'; }
+    });
+  }
+  initPostThumbnails();
+
+  // Panel interactions: scroll to anchor or open link
+  document.querySelectorAll('.panel-item').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var t = btn.getAttribute('data-target');
+      if(!t) return;
+      // Set active class
+      document.querySelectorAll('.panel-item').forEach(function(x){ x.classList.remove('active') });
+      btn.classList.add('active');
+      if(t.startsWith('#')){
+        var el = document.querySelector(t);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      } else if(t.startsWith('posts/') || t.endsWith('.html')){
+        window.open(t, '_blank');
+      } else {
+        window.open(t, '_blank');
+      }
+    });
+  });
+
+  // Highlight panel item when the related post is in view
+  function syncPanelWithScroll(){
+    var posts = document.querySelectorAll('.post-card');
+    posts.forEach(function(p){
+      var rect = p.getBoundingClientRect();
+      var anchor = p.querySelector('h4 a');
+      var target = anchor ? anchor.getAttribute('href') : null;
+      if(!target || !target.startsWith('#')) return;
+      var panelBtn = document.querySelector('.panel-item[data-target="' + target + '"]');
+      if(!panelBtn) return;
+      if(rect.top >= 0 && rect.top < (window.innerHeight * 0.4)){
+        panelBtn.classList.add('active');
+      } else {
+        panelBtn.classList.remove('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', syncPanelWithScroll, {passive:true});
+  syncPanelWithScroll();
+
+  // Social buttons: open in new tab and add glow animation
+  document.querySelectorAll('.btn.social').forEach(function(b){
+    b.addEventListener('click', function(e){
+      // default is to follow link; we can add a simple effect
+      b.classList.add('neon'); setTimeout(()=>b.classList.remove('neon'), 800);
+    });
+  });
+
   // Parallax for hero background
   var heroBg = qs('.hero-bg');
   if(heroBg){
