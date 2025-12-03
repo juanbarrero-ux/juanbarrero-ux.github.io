@@ -7,30 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      :root{
-        --bg:#0b1220; --surface:#0f1724; --muted:#9aa4b2; --accent:#60c5ff; --card:#0e1a2a; --glass:rgba(255,255,255,0.03)
-      }
-      *{box-sizing:border-box}
-      html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:linear-gradient(180deg,var(--bg) 0%, #071029 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
-      .container{max-width:1100px;margin:32px auto;padding:28px}
-      header.site{display:flex;align-items:center;justify-content:space-between;gap:18px}
-      .brand{display:flex;align-items:center;gap:14px}
-      .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04263a;font-size:18px}
-      nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-      nav a:hover{color:var(--accent)}
-      .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:18px;align-items:start}
-      .card{background:var(--card);padding:26px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-      h1{margin:0;font-size:28px}
-      p.lead{color:var(--muted);margin-top:10px;line-height:1.55}
-      .meta{color:var(--muted);font-size:13px;margin-top:8px}
-      .video{border-radius:10px;overflow:hidden}
-      .content h2{margin-top:8px}
-      .two-col{display:grid;grid-template-columns:1fr 360px;gap:24px}
-      .mindmap{background:var(--glass);padding:12px;border-radius:8px}
-      footer.site{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-      @media (max-width:980px){.hero,.two-col{grid-template-columns:1fr} .hero .video-frame{height:220px}}
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
     <div class="container">
@@ -50,14 +27,17 @@
       </header>
 
       <main class="hero">
-        <div class="card content">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="glass-card content fade-in">
+          <div class="badge">HTML5 • CSS3</div>
           <h2 id="post-limites-eticos">Límites éticos para la inteligencia artificial</h2>
           <p class="lead">Análisis extendido sobre el documental de DW: una mirada técnica y ética sobre el desarrollo de la IA, sus riesgos y las decisiones políticas y de ingeniería necesarias hoy para garantizar un futuro humano y seguro.</p>
           <div class="meta">Publicado: 2025 — Reflexión técnica y de política pública</div>
 
           <section style="margin-top:18px">
+              <p style="margin-top:10px"><a class="btn cta" href="posts/presentacion-etica-digital.html">Ver presentación</a></p>
             <h3>Video</h3>
-            <div class="video video-frame card">
+            <div class="video video-frame">
               <iframe src="https://www.youtube.com/embed/sHVwwriaT6k?start=5" title="Límites éticos para la IA" style="width:100%;height:360px;border:0" allowfullscreen loading="lazy"></iframe>
             </div>
             <p style="color:var(--muted);font-size:14px;margin-top:8px">En este video comento los puntos centrales del documental y extraigo lecciones prácticas para equipos de desarrollo y responsables de producto.</p>
@@ -87,7 +67,7 @@
         </div>
 
         <aside style="width:360px">
-          <div class="card mindmap">
+            <div class="card mindmap">
             <h3 style="margin-top:0">Mapa mental — Límites éticos (Markmap)</h3>
             <div id="mindmap" style="height:420px"></div>
             <p style="color:var(--muted);font-size:13px;margin-top:8px">Interactúa con el mapa para explorar ideas y conexiones.</p>
@@ -101,9 +81,36 @@
       </main>
 
       <section style="max-width:1100px;margin:26px auto">
-        <div class="card">
+          <div class="card">
           <h3>Resumen ejecutivo</h3>
           <p class="lead">Para equipos técnicos: priorizar controles operativos, métricas explicables y planes de contingencia. Para gobiernos: promover estándares de auditoría y transparencia que no frenen la innovación, sino que la encaucen responsablemente.</p>
+        </div>
+      </section>
+
+      <!-- Entradas profesionales -->
+      <section class="posts" style="max-width:1100px;margin:26px auto">
+        <h3>Entradas recientes</h3>
+        <div class="posts-grid">
+          <article class="post-card card">
+            <h4><a href="#post-limites-eticos">Límites éticos para la inteligencia artificial</a></h4>
+            <p class="meta">Publicado: 2025 • Análisis técnico y de políticas</p>
+            <p class="muted">Exploración de riesgos técnicos, mitigaciones y gobernanza para el despliegue seguro de IA.</p>
+            <p><a class="btn" href="#post-limites-eticos">Leer</a></p>
+          </article>
+
+          <article class="post-card card">
+            <h4><a href="posts/presentacion-etica-digital.html">Presentación: Ética digital — Aplicaciones</a></h4>
+            <p class="meta">Publicado: 2025 • Presentación interactiva</p>
+            <p class="muted">Presentación con ejemplos de cómo aplicar principios éticos en proyectos reales.</p>
+            <p><a class="btn" href="posts/presentacion-etica-digital.html">Abrir</a></p>
+          </article>
+
+          <article class="post-card card">
+            <h4><a href="posts/infografia-derechos-autor.html">Infografía: Derechos de Autor</a></h4>
+            <p class="meta">Publicado: 2025 • Infografía y guía de licencias</p>
+            <p class="muted">Resumen visual de derechos de autor y guía práctica para elegir e implementar licencias para desarrollos.</p>
+            <p><a class="btn" href="posts/infografia-derechos-autor.html">Ver infografía</a></p>
+          </article>
         </div>
       </section>
 
@@ -152,37 +159,78 @@
     </script>
 
     <!-- Cargar Markmap (d3 primero, luego markmap-lib y markmap-view) y renderizar -->
-      <!-- Cargar Markmap (d3, markmap-lib, markmap-view) mediante etiquetas estáticas y renderizar -->
-      <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-      <!-- Usar bundles UMD/global desde unpkg para exponer 'markmap' y 'markmapLib' en window -->
-      <script src="https://unpkg.com/markmap-lib@0.13.0/dist/index.global.js"></script>
-      <script src="https://unpkg.com/markmap-view@0.13.0/dist/index.global.js"></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function(){
-          try{
-            var mdEl = document.getElementById('mindmap-md');
-            var md = mdEl ? mdEl.textContent : '';
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <!-- UMD/IIFE bundles (browser-ready) -->
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.18.12/dist/browser/index.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script>
 
-            // Obtener referencias desde globals esperados
-            var Transformer = window.markmapLib && window.markmapLib.Transformer;
-            var Markmap = window.markmap && window.markmap.Markmap;
+    <!-- Inicializador robusto: espera a que los bundles estén listos, transforma el Markdown y crea la instancia -->
+    <script>
+      (function waitForMarkmap() {
+        if (!window.d3) {
+          console.log('Esperando a d3...');
+          return setTimeout(waitForMarkmap, 150);
+        }
+        if (!window.markmap) {
+          console.log('Esperando a markmap (view)...');
+          return setTimeout(waitForMarkmap, 150);
+        }
+        // markmap-view provides window.markmap.Markmap
+        const Markmap = window.markmap && window.markmap.Markmap;
+        if (!Markmap) {
+          console.error('Markmap (view) no se cargó correctamente:', window.markmap);
+          return;
+        }
 
-            console.log('Markmap globals:', {d3: !!window.d3, markmapLib: !!window.markmapLib, markmap: !!window.markmap});
+        // Obtener Markdown fuente
+        const mdEl = document.getElementById('mindmap-md');
+        const md = mdEl ? mdEl.textContent || mdEl.innerText : '';
 
-            if(!Transformer || !Markmap){
-              console.error('Markmap libraries not available. Comprueba que los scripts CDN se carguen sin bloqueos.');
-              return;
-            }
+        // Intentar localizar la función de transformación (varía según bundle)
+        let transform = null;
+        if (window.markmapLib && typeof window.markmapLib.transform === 'function') transform = window.markmapLib.transform;
+        if (!transform && window.markmap && typeof window.markmap.transform === 'function') transform = window.markmap.transform;
+        if (!transform && window.markmap && window.markmap.markmapLib && typeof window.markmap.markmapLib.transform === 'function') transform = window.markmap.markmapLib.transform;
 
-            var result = Transformer.transform(md || '# (vacío)');
-            var mm = Markmap.create('#mindmap');
-            mm.setData(result.root);
-            if(typeof mm.fit === 'function') mm.fit();
-          }catch(e){
-            console.error('Markmap render error', e);
+        // Crear SVG y renderizar
+        const container = document.getElementById('mindmap');
+        if (!container) {
+          console.error('Contenedor #mindmap no encontrado');
+          return;
+        }
+        container.innerHTML = '';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        container.appendChild(svg);
+
+        // Si conseguimos transform, producir datos; si no, pasar null (Markmap puede aceptar HTML/JSON en algunos casos)
+        let data = null;
+        try {
+          if (transform) {
+            data = transform(md);
+            console.log('Markmap: transformó Markdown a data', data && typeof data === 'object' && data.type ? 'ok' : 'no info');
+          } else {
+            console.warn('No se detectó función transform en markmap-lib; pasando raw Markdown a Markmap (si lo soporta).');
           }
-        });
-      </script>
+        } catch (err) {
+          console.error('Error al transformar Markdown para Markmap:', err);
+        }
+
+        try {
+          const mm = Markmap.create(svg, {autoFit: true}, data || md);
+          // Exponer para depuración y para llamadas desde assets/main.js
+          window.__markmap = mm;
+          console.log('Markmap inicializado', mm);
+          // Llamar fit si existe
+          if (mm && typeof mm.fit === 'function') mm.fit().catch(()=>{});
+        } catch (err) {
+          console.error('Error al crear Markmap:', err);
+        }
+      })();
     </script>
+    <script src="assets/main.js" defer></script>
   </body>
 </html>
