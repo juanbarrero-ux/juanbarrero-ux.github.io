@@ -50,7 +50,9 @@
   initPostThumbnails();
 
   // Panel interactions: scroll to anchor or open link
-  document.querySelectorAll('.panel-item').forEach(function(btn){
+  function setupPanelItems(root){
+    var items = (root||document).querySelectorAll('.panel-item');
+    items.forEach(function(btn){
     btn.addEventListener('click', function(){
       var t = btn.getAttribute('data-target');
       if(!t) return;
@@ -65,8 +67,17 @@
       } else {
         window.open(t, '_blank');
       }
+      // If this click happened inside the mobile drawer, close it
+      try{
+        if(root && root.id === 'mobile-drawer'){
+          var dr = document.getElementById('mobile-drawer');
+          if(dr){ dr.setAttribute('aria-hidden','true'); var toggle = document.querySelector('.drawer-toggle'); if(toggle){ toggle.setAttribute('aria-expanded','false') } document.body.style.overflow=''; }
+        }
+      }catch(e){/* ignore */}
     });
-  });
+    });
+  }
+  setupPanelItems();
 
   // Highlight panel item when the related post is in view
   function syncPanelWithScroll(){
@@ -144,6 +155,30 @@
     emailEls.forEach(function(btn){ btn.addEventListener('click', function(){ var text=btn.getAttribute('data-copy-email'); if(navigator.clipboard){ navigator.clipboard.writeText(text).then(function(){ btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar correo',1400); }); } }) });
   }
   attachCopyEmail();
+
+  // Drawer: mobile floating panel
+  var drawerToggle = qs('.drawer-toggle');
+  var drawer = document.getElementById('mobile-drawer');
+  var drawerClose = drawer && drawer.querySelector('.drawer-close');
+  var drawerList = drawer && drawer.querySelector('.drawer-list');
+  if(drawer && drawerToggle){
+    // copy the panel list into drawer list to keep behaviors
+    var originalPanel = document.querySelector('.panel-list');
+    if(originalPanel && drawerList){
+      drawerList.innerHTML = originalPanel.innerHTML;
+      // reinitialize panel items inside drawer
+      setupPanelItems(drawer);
+    }
+    drawerToggle.addEventListener('click', function(e){
+      var open = drawer.getAttribute('aria-hidden') === 'false';
+      drawer.setAttribute('aria-hidden', open ? 'true' : 'false');
+      drawerToggle.setAttribute('aria-expanded', String(!open));
+      if(!open){ document.body.style.overflow='hidden' } else { document.body.style.overflow='' }
+    });
+    if(drawerClose){ drawerClose.addEventListener('click', function(){ drawer.setAttribute('aria-hidden','true'); drawerToggle.setAttribute('aria-expanded','false'); document.body.style.overflow='' }) }
+    // close when clicking outside of drawer
+    drawer.addEventListener('click', function(e){ if(e.target===drawer){ drawer.setAttribute('aria-hidden','true'); drawerToggle.setAttribute('aria-expanded','false'); document.body.style.overflow='' } });
+  }
 
   // Animate the badge into view
   var badge = qs('.badge');
