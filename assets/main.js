@@ -35,16 +35,14 @@
 
   // Mindmap removed: no observation needed
 
-  // Set thumbnails for post cards from data-img attribute
+  // Set background images for post cards from data-img attribute
   function initPostThumbnails(){
     var posts = document.querySelectorAll('.post-card');
     posts.forEach(function(card){
       var img = card.getAttribute('data-img');
-      var thumb = card.querySelector('.thumb');
-      if(!thumb) return;
-      if(img){ thumb.style.backgroundImage = 'url("' + img + '")'; }
-      // set entire card background image with a subtle cover
-      if(img){ card.style.backgroundImage = 'url("' + img + '")'; card.style.backgroundSize = 'cover'; card.style.backgroundPosition = 'center'; card.style.backgroundRepeat='no-repeat'; }
+      if(img){ 
+        card.style.backgroundImage = 'url("' + img + '")'; 
+      }
     });
   }
   initPostThumbnails();
