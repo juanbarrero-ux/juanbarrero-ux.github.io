@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privacidad Digital: Ventajas y Desventajas — Juan Barrero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <style>
+      /* Hero Section */
+      .privacy-hero {
+        background: linear-gradient(135deg, rgba(6,6,10,0.85), rgba(11,11,16,0.92)), url('/IMAGENES/cyberpunk-2077-futuristic-city-mpkxyamwbd740l3h.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 60px 35px;
+        border-radius: 24px 24px 0 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .privacy-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(ellipse at top, rgba(0,240,255,0.15), transparent 60%);
+        pointer-events: none;
+      }
+      .privacy-hero h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2em;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #00f0ff, #ff2fa6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        z-index: 1;
+      }
+      .privacy-hero .lead {
+        max-width: 750px;
+        margin: 0 auto;
+        color: rgba(255,255,255,0.9);
+        font-size: 1.1em;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+      .privacy-hero .icon-shield {
+        font-size: 70px;
+        margin-bottom: 20px;
+        display: block;
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge {
+        background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,47,166,0.1));
+        border: 1px solid rgba(0,240,255,0.3);
+        padding: 10px 18px;
+        border-radius: 25px;
+        font-size: 13px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      
+      /* Content Container */
+      .entry-content {
+        padding: 35px;
+      }
+      
+      /* Section Titles */
+      .section-title {
+        font-family: 'Orbitron', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 35px 0 20px;
+        font-size: 1.4em;
+        color: #fff;
+      }
+      .section-title .icon {
+        font-size: 32px;
+      }
+      
+      /* Definition Card */
+      .definition-card {
+        background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(0,180,255,0.04));
+        border: 1px solid rgba(0,240,255,0.2);
+        border-radius: 18px;
+        padding: 28px;
+        margin: 20px 0;
+        position: relative;
+      }
+      .definition-card::before {
+        content: '📖';
+        position: absolute;
+        top: -15px;
+        left: 25px;
+        background: var(--bg-900);
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 24px;
+      }
+      .definition-card h4 {
+        color: var(--accent);
+        margin: 0 0 12px;
+        font-size: 1.1em;
+      }
+      .definition-card p {
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+        margin: 0;
+      }
+      
+      /* Ventajas/Desventajas Grid */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin: 25px 0;
+      }
+      .comparison-column {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .comparison-header {
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .comparison-header.ventajas {
+        background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(52,211,153,0.1));
+        border-bottom: 2px solid rgba(16,185,129,0.4);
+      }
+      .comparison-header.desventajas {
+        background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(248,113,113,0.1));
+        border-bottom: 2px solid rgba(239,68,68,0.4);
+      }
+      .comparison-header .icon {
+        font-size: 28px;
+      }
+      .comparison-header h4 {
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1em;
+      }
+      .comparison-header.ventajas h4 { color: #10b981; }
+      .comparison-header.desventajas h4 { color: #ef4444; }
+      
+      .comparison-list {
+        padding: 20px 24px;
+      }
+      .comparison-item {
+        display: flex;
+        gap: 14px;
+        padding: 16px;
+        background: rgba(255,255,255,0.02);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255,255,255,0.04);
+        transition: all 0.3s ease;
+      }
+      .comparison-item:hover {
+        transform: translateX(8px);
+        border-color: rgba(255,255,255,0.1);
+      }
+      .comparison-item:last-child { margin-bottom: 0; }
+      .comparison-item .number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .ventajas .comparison-item .number {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #fff;
+      }
+      .desventajas .comparison-item .number {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: #fff;
+      }
+      .comparison-item .text h5 {
+        color: #fff;
+        margin: 0 0 6px;
+        font-size: 1em;
+      }
+      .comparison-item .text p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0;
+      }
+      
+      /* Análisis Comparativo */
+      .analysis-section {
+        background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(139,92,246,0.04));
+        border: 1px solid rgba(168,85,247,0.2);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 30px 0;
+      }
+      .analysis-section h3 {
+        font-family: 'Orbitron', sans-serif;
+        color: #a855f7;
+        margin: 0 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .analysis-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        border-radius: 14px;
+      }
+      .analysis-table thead th {
+        background: rgba(168,85,247,0.2);
+        padding: 16px;
+        text-align: left;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 13px;
+        color: #d8b4fe;
+        border-bottom: 2px solid rgba(168,85,247,0.3);
+      }
+      .analysis-table tbody td {
+        padding: 16px;
+        background: rgba(255,255,255,0.02);
+        color: rgba(255,255,255,0.85);
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+      }
+      .analysis-table tbody tr:last-child td { border-bottom: none; }
+      .analysis-table tbody tr:hover td {
+        background: rgba(168,85,247,0.08);
+      }
+      .analysis-table .aspect {
+        font-weight: 600;
+        color: #c4b5fd;
+      }
+      .analysis-table .ventaja { color: #34d399; }
+      .analysis-table .desventaja { color: #f87171; }
+      
+      /* Problemas de Privacidad */
+      .problems-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .problem-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: default;
+      }
+      .problem-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(239,68,68,0.3);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      }
+      .problem-card .icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .problem-card h5 {
+        color: #fff;
+        margin: 0 0 8px;
+        font-size: 0.95em;
+      }
+      .problem-card p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 0;
+      }
+      
+      /* Tips Section */
+      .tips-section {
+        background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(37,99,235,0.04));
+        border: 1px solid rgba(59,130,246,0.2);
+        border-radius: 18px;
+        padding: 28px;
+        margin: 25px 0;
+      }
+      .tips-section h4 {
+        color: #3b82f6;
+        margin: 0 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Orbitron', sans-serif;
+      }
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+      .tip-item {
+        display: flex;
+        gap: 12px;
+        padding: 16px;
+        background: rgba(59,130,246,0.08);
+        border-radius: 12px;
+        border: 1px solid rgba(59,130,246,0.15);
+      }
+      .tip-item .icon {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .tip-item p {
+        color: rgba(255,255,255,0.85);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+      }
+      
+      /* Interactive Chart */
+      .chart-container {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid rgba(0,240,255,0.1);
+        border-radius: 18px;
+        padding: 25px;
+        margin: 25px 0;
+      }
+      .chart-container h4 {
+        text-align: center;
+        color: #fff;
+        margin: 0 0 25px;
+        font-family: 'Orbitron', sans-serif;
+      }
+      .bar-chart {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .bar-item {
+        display: grid;
+        grid-template-columns: 140px 1fr 60px;
+        gap: 15px;
+        align-items: center;
+      }
+      .bar-label {
+        color: rgba(255,255,255,0.8);
+        font-size: 13px;
+        text-align: right;
+      }
+      .bar-track {
+        height: 28px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+      }
+      .bar-fill {
+        height: 100%;
+        border-radius: 14px;
+        transition: width 1s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 12px;
+      }
+      .bar-fill.positive { background: linear-gradient(90deg, #10b981, #34d399); }
+      .bar-fill.negative { background: linear-gradient(90deg, #ef4444, #f87171); }
+      .bar-fill.neutral { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+      .bar-value {
+        font-weight: 700;
+        font-size: 13px;
+        color: rgba(255,255,255,0.9);
+      }
+      
+      /* Source Citation */
+      .source-citation {
+        background: rgba(255,255,255,0.02);
+        border-left: 4px solid var(--accent);
+        padding: 16px 20px;
+        border-radius: 0 12px 12px 0;
+        margin: 25px 0;
+      }
+      .source-citation p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      .source-citation a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .source-citation a:hover { text-decoration: underline; }
+      
+      /* Author Card */
+      .author-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: linear-gradient(135deg, rgba(255,47,166,0.05), rgba(0,240,255,0.05));
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 18px;
+        padding: 24px;
+        margin-top: 30px;
+      }
+      .author-avatar {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 26px;
+        color: #04263a;
+        flex-shrink: 0;
+      }
+      .author-info h4 {
+        color: #fff;
+        margin: 0 0 6px;
+        font-size: 1.1em;
+      }
+      .author-info p {
+        color: var(--muted);
+        margin: 4px 0;
+        font-size: 14px;
+      }
+      .author-info a { color: var(--accent); }
+      
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="site" style="margin-bottom:18px">
+        <div class="brand">
+          <div class="logo">JB</div>
+          <div>
+            <h1>Privacidad Digital</h1>
+            <div class="meta">Análisis • Ventajas • Desventajas • Ética Digital</div>
+          </div>
+        </div>
+        <nav>
+          <a href="/">← Inicio</a>
+        </nav>
+      </header>
+
+      <main class="card page-card" style="padding:0;overflow:hidden">
+        
+        <!-- Hero Section -->
+        <div class="privacy-hero">
+          <span class="icon-shield">🛡️</span>
+          <h2>Privacidad Digital en Internet</h2>
+          <p class="lead">
+            Análisis comparativo de las ventajas y desventajas de la privacidad digital. 
+            Importancia, riesgos y estrategias de protección en la era de la información.
+          </p>
+          <div class="hero-badges">
+            <span class="hero-badge">🔒 Protección de Datos</span>
+            <span class="hero-badge">⚖️ RGPD</span>
+            <span class="hero-badge">🌐 Seguridad Online</span>
+            <span class="hero-badge">👤 Derechos Digitales</span>
+          </div>
+        </div>
+
+        <div class="entry-content">
+          
+          <!-- Definición -->
+          <div class="definition-card fade-in">
+            <h4>¿Qué es la Privacidad Digital?</h4>
+            <p>
+              La <strong>privacidad digital</strong> es un derecho que busca garantizar la protección de los datos personales 
+              de los usuarios que acceden a servicios a través de internet. Debe asegurar que puedan <strong>saber, decidir 
+              y controlar</strong> el tratamiento que se va a hacer de sus datos personales recopilados en webs, aplicaciones 
+              o redes sociales. Es un elemento clave que afecta a la dignidad y libertad de los individuos en el mundo digital.
+            </p>
+          </div>
+
+          <!-- Ventajas y Desventajas Grid -->
+          <h3 class="section-title fade-in">
+            <span class="icon">⚖️</span> Ventajas vs Desventajas
+          </h3>
+          
+          <div class="comparison-grid">
+            <!-- Ventajas -->
+            <div class="comparison-column ventajas fade-in">
+              <div class="comparison-header ventajas">
+                <span class="icon">✅</span>
+                <h4>Ventajas de la Privacidad Digital</h4>
+              </div>
+              <div class="comparison-list">
+                <div class="comparison-item">
+                  <div class="number">1</div>
+                  <div class="text">
+                    <h5>Cumplimiento Legal</h5>
+                    <p>Respetar las obligaciones legales con respecto a la protección de datos personales (RGPD, directivas europeas).</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">2</div>
+                  <div class="text">
+                    <h5>Confianza del Usuario</h5>
+                    <p>Aumentar la confianza de equipos, clientes y proveedores al garantizar el respeto de sus derechos y libertades.</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">3</div>
+                  <div class="text">
+                    <h5>Competitividad</h5>
+                    <p>Incrementar la competitividad de servicios y procesos internos, convirtiéndose en un factor diferencial.</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">4</div>
+                  <div class="text">
+                    <h5>Seguridad de Datos</h5>
+                    <p>Garantizar la integridad, confidencialidad y disponibilidad de los datos evitando brechas de seguridad.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Desventajas -->
+            <div class="comparison-column desventajas fade-in">
+              <div class="comparison-header desventajas">
+                <span class="icon">⚠️</span>
+                <h4>Desventajas (Sin Estrategia)</h4>
+              </div>
+              <div class="comparison-list">
+                <div class="comparison-item">
+                  <div class="number">1</div>
+                  <div class="text">
+                    <h5>Consecuencias Legales</h5>
+                    <p>Responsabilidad penal, civil y laboral por incumplimiento de normativas de protección de datos.</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">2</div>
+                  <div class="text">
+                    <h5>Sanciones Económicas</h5>
+                    <p>Multas muy cuantiosas por violación de RGPD (hasta 20M€ o 4% de facturación global).</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">3</div>
+                  <div class="text">
+                    <h5>Ciberataques</h5>
+                    <p>Peligro de ataques si los datos personales son vulnerables: phishing, ransomware, robo de identidad.</p>
+                  </div>
+                </div>
+                <div class="comparison-item">
+                  <div class="number">4</div>
+                  <div class="text">
+                    <h5>Daño Reputacional</h5>
+                    <p>Impacto severo en la imagen, visibilidad y credibilidad del proyecto, comprometiendo su continuidad.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Análisis Comparativo -->
+          <div class="analysis-section fade-in">
+            <h3><span style="font-size:28px">📊</span> Análisis Comparativo</h3>
+            <table class="analysis-table">
+              <thead>
+                <tr>
+                  <th>Aspecto</th>
+                  <th>Con Estrategia de Privacidad</th>
+                  <th>Sin Estrategia de Privacidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="aspect">Marco Legal</td>
+                  <td class="ventaja">✓ Cumplimiento RGPD y directivas</td>
+                  <td class="desventaja">✗ Sanciones hasta 20M€</td>
+                </tr>
+                <tr>
+                  <td class="aspect">Reputación</td>
+                  <td class="ventaja">✓ Confianza y credibilidad</td>
+                  <td class="desventaja">✗ Daño severo a la imagen</td>
+                </tr>
+                <tr>
+                  <td class="aspect">Seguridad</td>
+                  <td class="ventaja">✓ Protección contra ciberataques</td>
+                  <td class="desventaja">✗ Vulnerabilidad a hackers</td>
+                </tr>
+                <tr>
+                  <td class="aspect">Competitividad</td>
+                  <td class="ventaja">✓ Factor diferencial positivo</td>
+                  <td class="desventaja">✗ Pérdida de clientes</td>
+                </tr>
+                <tr>
+                  <td class="aspect">Operativa</td>
+                  <td class="ventaja">✓ Gestión documental eficiente</td>
+                  <td class="desventaja">✗ Fallos y errores humanos</td>
+                </tr>
+                <tr>
+                  <td class="aspect">Continuidad</td>
+                  <td class="ventaja">✓ Sostenibilidad del proyecto</td>
+                  <td class="desventaja">✗ Riesgo de cierre</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Gráfico de Barras -->
+          <div class="chart-container fade-in">
+            <h4>📈 Impacto de la Privacidad Digital</h4>
+            <div class="bar-chart">
+              <div class="bar-item">
+                <span class="bar-label">Confianza Usuario</span>
+                <div class="bar-track">
+                  <div class="bar-fill positive" style="width: 92%"></div>
+                </div>
+                <span class="bar-value">+92%</span>
+              </div>
+              <div class="bar-item">
+                <span class="bar-label">Competitividad</span>
+                <div class="bar-track">
+                  <div class="bar-fill positive" style="width: 78%"></div>
+                </div>
+                <span class="bar-value">+78%</span>
+              </div>
+              <div class="bar-item">
+                <span class="bar-label">Riesgo Legal (sin)</span>
+                <div class="bar-track">
+                  <div class="bar-fill negative" style="width: 85%"></div>
+                </div>
+                <span class="bar-value">85%</span>
+              </div>
+              <div class="bar-item">
+                <span class="bar-label">Ciberataques (sin)</span>
+                <div class="bar-track">
+                  <div class="bar-fill negative" style="width: 73%"></div>
+                </div>
+                <span class="bar-value">73%</span>
+              </div>
+              <div class="bar-item">
+                <span class="bar-label">Inversión Requerida</span>
+                <div class="bar-track">
+                  <div class="bar-fill neutral" style="width: 45%"></div>
+                </div>
+                <span class="bar-value">45%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problemas de Privacidad -->
+          <h3 class="section-title fade-in">
+            <span class="icon">🚨</span> Principales Amenazas
+          </h3>
+          
+          <div class="problems-grid fade-in">
+            <div class="problem-card">
+              <span class="icon">👊</span>
+              <h5>Ciberbullying</h5>
+              <p>Acoso consciente y repetitivo por medios digitales</p>
+            </div>
+            <div class="problem-card">
+              <span class="icon">🎭</span>
+              <h5>Phishing</h5>
+              <p>Suplantación de identidad para obtener datos</p>
+            </div>
+            <div class="problem-card">
+              <span class="icon">📍</span>
+              <h5>Stalking</h5>
+              <p>Rastreo y geolocalización no autorizada</p>
+            </div>
+            <div class="problem-card">
+              <span class="icon">📧</span>
+              <h5>Spam</h5>
+              <p>Invasión digital para estafas</p>
+            </div>
+            <div class="problem-card">
+              <span class="icon">🔓</span>
+              <h5>Robo de IP</h5>
+              <p>Robo de propiedad intelectual</p>
+            </div>
+            <div class="problem-card">
+              <span class="icon">👤</span>
+              <h5>Usurpación</h5>
+              <p>Robo y uso de identidad</p>
+            </div>
+          </div>
+
+          <!-- Tips de Protección -->
+          <div class="tips-section fade-in">
+            <h4>🔐 Cómo Proteger tu Privacidad</h4>
+            <div class="tips-grid">
+              <div class="tip-item">
+                <span class="icon">🌐</span>
+                <p><strong>Usa VPN:</strong> Red privada virtual que cifra tu conexión manteniendo tu anonimato.</p>
+              </div>
+              <div class="tip-item">
+                <span class="icon">🔑</span>
+                <p><strong>Contraseñas seguras:</strong> Usa combinaciones complejas y autenticación de dos factores.</p>
+              </div>
+              <div class="tip-item">
+                <span class="icon">📡</span>
+                <p><strong>WiFi privado:</strong> Mantén tu red protegida para evitar accesos no autorizados.</p>
+              </div>
+              <div class="tip-item">
+                <span class="icon">🔄</span>
+                <p><strong>Actualizaciones:</strong> Mantén sistema operativo y software actualizados.</p>
+              </div>
+              <div class="tip-item">
+                <span class="icon">🕵️</span>
+                <p><strong>Modo incógnito:</strong> Navega de forma privada para reducir rastreo.</p>
+              </div>
+              <div class="tip-item">
+                <span class="icon">📍</span>
+                <p><strong>Geolocalización:</strong> Desactívala cuando no sea necesaria.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fuente -->
+          <div class="source-citation fade-in">
+            <p>
+              📚 <strong>Fuente:</strong> Basado en la lectura 
+              <a href="https://smowl.net/es/blog/privacidad-digital/" target="_blank">
+                "Privacidad digital: importancia, ventajas y desventajas"
+              </a> — Smowltech (2023)
+            </p>
+          </div>
+
+          <!-- Autor -->
+          <div class="author-card fade-in">
+            <div class="author-avatar">JB</div>
+            <div class="author-info">
+              <h4>Juan Pablo Barrero Contreras</h4>
+              <p>Estudiante de Tecnología en Programación de Sistemas Informáticos — UPTC</p>
+              <p>📧 <a href="mailto:juan.barrero@uptc.edu.co">juan.barrero@uptc.edu.co</a></p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <footer class="site">
+        © 2025 Juan Barrero — Privacidad Digital: Análisis Comparativo
+      </footer>
+    </div>
+    
+    <script>
+      // Scroll animation for fade-in elements
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      
+      // Animate bars on load
+      window.addEventListener('load', () => {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 500);
+        });
+      });
+    </script>
+    
+    <script src="/assets/main.js" defer></script>
+  </body>
+</html>
